@@ -74,11 +74,12 @@
         },
         habilitada: {
           get: function () {            
-            var m = this.$store.getters.getMateriaById(this.id);
-            var necesitaRegulares = m.cursar.regular;
-            var necesitaAprobadas = m.cursar.aprobada;
-            var estanRegulares = this.$store.getters.getMateriasRegulares.map(m => m.id);
-            var estanAprobadas = this.$store.getters.getMateriasAprobadas.map(m => m.id);
+            const materia = this.$store.getters.getMateriaById(this.id);
+            const necesitaRegulares = materia.cursar.regular;
+            const necesitaAprobadas = materia.cursar.aprobada;
+            const estanRegulares = this.$store.getters.getMateriasRegulares.map(m => m.id);
+            const estanAprobadas = this.$store.getters.getMateriasAprobadas.map(m => m.id);
+            const regularesYAprobadas = estanRegulares.concat(estanAprobadas);
 
             function arrayContainsArray (superset, subset) {
               return subset.every(function (value) {
@@ -86,15 +87,16 @@
               });
             }
 
-            if (m.id == '9') {
-              console.log(necesitaRegulares);
-              console.log('necesitaAprobadas: ' + necesitaAprobadas);
-              console.log(estanRegulares);
-              console.log('estanAprobadas: ' + estanAprobadas);
-              console.log('Soy ' + m.id + ': ' + arrayContainsArray(estanRegulares, necesitaRegulares) + ' y ' + arrayContainsArray(estanAprobadas, necesitaAprobadas));
-            }
+            const sePuedeCursar = arrayContainsArray(regularesYAprobadas, necesitaRegulares)
+                && arrayContainsArray(estanAprobadas, necesitaAprobadas);
 
-            return arrayContainsArray(estanRegulares, necesitaRegulares) && arrayContainsArray(estanAprobadas, necesitaAprobadas);
+            if (!sePuedeCursar)
+              store.commit('cambiarEstadoMateria', {
+                id: materia.id,
+                estado: 'desaprobada'
+              });
+
+            return sePuedeCursar;
           }
         }
       },
