@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Example</title>
+</head>
+<body>
+  <div id="app">
+    <materia v-for="materia in materias"
+             :codigo="materia.codigo"
+             :nombre="materia.nombre"
+             :integradora="materia.integradora"
+             :se-cursa="materia.puedeCursarse"
+             @cambio="actualizarEstado">
+    </materia>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('materia', {
+      props: ['codigo', 'nombre', 'integradora', 'se-cursa'],
+      template: '\
+        <div>\
+          <div>{{ nombre }}<em v-if="integradora"> (Integradora)</em></div>\
+          <input type="radio" @change="cambioEstado" :name="[`estado-${ codigo }`]" v-model="estado" :disabled="!seCursa" value="desaprobada">Desaprobada<br>\
+          <input type="radio" @change="cambioEstado" :name="[`estado-${ codigo }`]" v-model="estado" :disabled="!seCursa" value="regular">Regular<br>\
+          <input type="radio" @change="cambioEstado" :name="[`estado-${ codigo }`]" v-model="estado" :disabled="!seCursa" value="aprobada">Aprobada<br><br>\
+        </div>\
+      ',
+      data: function () {
+        return {
+          estado: 'desaprobada'
+        }
+      },
+      methods: {
+        cambioEstado: function () {
+          this.$emit('cambio', this.codigo, this.estado);
+        }
+      }
+    });
+
+    const store = new Vuex.Store({
+      state: {
+        materias: [
+          { codigo: '1', nombre: 'Sistemas y Organizaciones',     integradora: true,  estado: 'desaprobada', puedeCursarse: true},
+          { codigo: '2', nombre: 'Álgebra y Geometría Analítica', integradora: false, estado: 'desaprobada', puedeCursarse: false},
+          { codigo: '3', nombre: 'Análisis Matemático I',         integradora: false, estado: 'desaprobada', puedeCursarse: false}
+        ]
+      },
+      getters: {
+        materiasAprobadas: state => {
+          return state.materias.filter(materia => materia.estado == 'aprobada')
+        }
+      }
+    });
+
+    var app = new Vue({
+      el: '#app',
+      store,
+      methods: {
+        actualizarEstado: function(codigoMateria, nuevoEstado) {
+          const indice = parseInt(codigoMateria) - 1;
+          this.materias[indice].estado = nuevoEstado;
+
+          this.materias.forEach(function (m) {
+            console.log('(' + m.codigo + ') ' + m.nombre + ' está ' + m.estado);
+          });
+
+          console.log('\n');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plan de Estudio</title>
+</head>
+<body>
+  <div id="app">
+    <materia v-for="m in this.$store.getters.getMaterias"
+             :key="m.id"
+             :id="m.id"
+             :nombre="m.nombre">
+    </materia>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@2.3.0"></script>  
+  <script>
+    const store = new Vuex.Store({
+      state: {
+        materias: [
+          { id: '1', nombre: 'Análisis Matemático I',             estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '2', nombre: 'Sistemas y Organizaciones',         estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '3', nombre: 'Álgebra y Geometría Analítica',     estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '4', nombre: 'Matemática Discreta',               estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '5', nombre: 'Química',                           estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '6', nombre: 'Sistemas de Representación',        estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '7', nombre: 'Algoritmos y Estructuras de Datos', estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '8', nombre: 'Arquitectura de Computadoras',      estado: 'desaprobada', cursar: { regular: [], aprobada: []}, aprobar: [] },
+          { id: '9', nombre: 'Análisis Matemático II',            estado: 'desaprobada', cursar: { regular: ['1', '3'], aprobada: []}, aprobar: ['1', '3'] },
+        ]
+      },
+      getters: {
+        getMaterias: state => {
+          return state.materias;
+        },
+        getMateriaById: (state, getters) => (id) => {
+          return state.materias.find(materia => materia.id === id)
+        },
+        getMateriasAprobadas: state => {
+          return state.materias.filter(materia => materia.estado === 'aprobada');
+        },
+        getMateriasRegulares: state => {
+          return state.materias.filter(materia => materia.estado === 'regular');
+        }
+      },
+      mutations: {
+        cambiarEstadoMateria (state, payload) {
+          state.materias.find(materia => materia.id === payload.id).estado = payload.estado;
+        }
+      }
+    });
+
+    const Materia = {
+      props: ['id', 'nombre'],
+      template: '\
+        <div>\
+          <div>{{ nombre }}</div>\
+          <input type="radio" :name="[`m-${ id }`]" v-model="estado" :disabled="!habilitada" value="desaprobada">Desaprobada<br>\
+          <input type="radio" :name="[`m-${ id }`]" v-model="estado" :disabled="!habilitada" value="regular">Regular<br>\
+          <input type="radio" :name="[`m-${ id }`]" v-model="estado" :disabled="!habilitada" value="aprobada">Aprobada<br><br>\
+        </div>',
+      computed: {
+        estado: {
+          get: function () {
+            return this.$store.getters.getMateriaById(this.id).estado;
+          },
+          set: function (valor) {
+            store.commit('cambiarEstadoMateria', {
+              id: this.id,
+              estado: valor
+            });
+          }
+        },
+        habilitada: {
+          get: function () {            
+            var m = this.$store.getters.getMateriaById(this.id);
+            var necesitaRegulares = m.cursar.regular;
+            var necesitaAprobadas = m.cursar.aprobada;
+            var estanRegulares = this.$store.getters.getMateriasRegulares.map(m => m.id);
+            var estanAprobadas = this.$store.getters.getMateriasAprobadas.map(m => m.id);
+
+            function arrayContainsArray (superset, subset) {
+              return subset.every(function (value) {
+                return (superset.indexOf(value) >= 0);
+              });
+            }
+
+            if (m.id == '9') {
+              console.log(necesitaRegulares);
+              console.log('necesitaAprobadas: ' + necesitaAprobadas);
+              console.log(estanRegulares);
+              console.log('estanAprobadas: ' + estanAprobadas);
+              console.log('Soy ' + m.id + ': ' + arrayContainsArray(estanRegulares, necesitaRegulares) + ' y ' + arrayContainsArray(estanAprobadas, necesitaAprobadas));
+            }
+
+            return arrayContainsArray(estanRegulares, necesitaRegulares) && arrayContainsArray(estanAprobadas, necesitaAprobadas);
+          }
+        }
+      },
+      methods: {
+
+      }
+    };
+    
+    const app = new Vue({
+      el: '#app',
+      store,
+      components: { Materia }
+    });
+  </script>
+</body>
+</html>
