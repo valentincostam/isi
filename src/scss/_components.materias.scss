@@ -1,0 +1,129 @@
+.materia {
+  color: #777;
+  padding: 30px 20px;
+  background: $materia;
+  border-bottom: 1px solid darken($materia, 7%);
+  position: relative;
+  overflow: hidden;
+  transition: all .5s;
+  cursor: not-allowed;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &.desaprobada {
+    border-left: 0 solid transparent;
+  }
+
+  &.regular {
+    border-left: 10px solid $regular;
+  }
+
+  &.aprobada {
+    border-left: 10px solid $aprobada;
+  }
+
+  .tipo {
+    display: inline-block;
+    font-size: .6em;
+    text-transform: uppercase;
+    background: darken($materia, 7%);
+    padding: 4px 6px;
+    border-radius: 4px;
+    vertical-align: bottom;
+    font-style: normal;
+  }
+
+  .condicion {
+    align-items: center;
+    // background: rgba(0, 0, 0, .4);
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    margin-left: -20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all .3s ease-out;
+    transform: translateX(100%);
+    // width: 100%;
+    z-index: 99;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, .5) inset;
+    
+    input[type="radio"] {
+      display: none;
+
+      &:disabled + label {
+        color: #aaa;
+        background: darken($fondo, 40%);
+        box-shadow: 0 3px 0 darken($fondo, 55%);
+        text-shadow: 0 -1px 0 darken($fondo, 55%);
+      }
+      
+      &:checked + label {
+        box-shadow: none;
+        margin-top: 5px;
+      }
+    }
+
+    label {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      cursor: not-allowed;
+      line-height: 50px;
+      text-align: center;
+      font-weight: bold;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      border-left: 1px solid rgba(255, 255, 255, .1);
+
+      &:nth-child(2) {
+        border-top-left-radius: 20%;
+        border-bottom-left-radius: 20%;
+      }
+
+      // &:nth-child(6) {
+      //   border-top-right-radius: 3px;
+      //   border-bottom-right-radius: 3px;
+      //   margin-right: 15px;
+      // }
+    }
+
+  }
+
+  &.se-cursa {
+    color: #000;
+    cursor: default;
+
+    label {
+      color: #fff;
+      cursor: pointer;
+
+      &:nth-child(2) {
+        background: $desaprobada;
+        box-shadow: 0 3px 0 darken($desaprobada, 20%);
+        text-shadow: 0 -1px 0 darken($desaprobada, 10%);
+      }
+
+      &:nth-child(4) {
+        background: $regular;
+        box-shadow: 0 3px 0 darken($regular, 20%);
+        text-shadow: 0 -1px 0 darken($regular, 10%);
+      }
+
+      &:nth-child(6) {
+        background: $aprobada;
+        box-shadow: 0 3px 0 darken($aprobada, 20%);
+        text-shadow: 0 -1px 0 darken($aprobada, 10%);
+      }
+    }
+  }
+
+  &:hover > .condicion {
+    // opacity: 1;
+
+    transform: translateX(0);
+  }
+}

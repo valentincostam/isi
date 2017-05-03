@@ -1,0 +1,43 @@
+.ano h2 {
+  background-color: #999;
+  color: #fff;
+  font-size: .7em;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 12px;
+  text-transform: uppercase;
+}
+
+.ano h3 {
+  background: darken($materia, 7%);
+  color: #444;
+  font-size: .7em;
+  font-weight: normal;
+  margin: 0;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.primer-ano {
+  border-left: 5px solid darken($primer, 7%);
+
+  h2 {
+    background-color: $primer;
+  }
+}
+
+.segundo-ano {
+  border-left: 5px solid darken($segundo, 7%);
+
+  h2 {
+    background-color: $segundo;
+  }
+}
+
+.tercer-ano {
+  border-left: 5px solid darken($tercer, 7%);
+
+  h2 {
+    background-color: $tercer;
+  }
+}

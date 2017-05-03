@@ -1,0 +1,9 @@
+a {
+  outline: 0;
+  text-decoration : none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
