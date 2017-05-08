@@ -9,43 +9,67 @@
   </head>
   <body>
     <div id="app">
-      <div class="barra-progreso" :style="'left: -' + (100 - progreso) + '%'">{{ progreso }}%</div>
       <section class="ano primer-ano">
-        <h2>Primer año</h2>
+        <h2 @click="aprobarAno(1)">Primer año</h2>
         <h3>Anual</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="anual">
+          <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Primer cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('1', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('1', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Segundo cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('1', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('1', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
       </section>
       <section class="ano segundo-ano">
         <h2>Segundo año</h2>
         <h3>Anual</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="anual">
+          <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Primer cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('2', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('2', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Segundo cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('2', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('2', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
       </section>
       <section class="ano tercer-ano">
         <h2>Tercer año</h2>
         <h3>Anual</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('3')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="anual">
+          <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('3')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Primer cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('3', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('3', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Segundo cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('3', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('3', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
       </section>
       <section class="ano cuarto-ano">
         <h2>Cuarto año</h2>
         <h3>Anual</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('4')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="anual">
+          <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('4')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Primer cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
         <h3>Segundo cuatrimestre</h3>
-        <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
       </section>
+      <div class="barra-progreso" :style="'left: -' + (100 - progreso) + '%'">{{ progreso }}%</div>
     </div>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.3.0"></script>

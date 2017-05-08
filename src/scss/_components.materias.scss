@@ -58,8 +58,9 @@
 
       &:disabled + label {
         color: #aaa;
-        background: darken($fondo, 40%);
-        text-shadow: 0 -1px 0 darken($fondo, 55%);
+        background: $desaprobada;
+        text-shadow: 0 -1px 0 darken($desaprobada, 10%);
+        border-left: 1px solid rgba(255, 255, 255, .1);
       }
       
       &:checked + label:nth-child(2) {

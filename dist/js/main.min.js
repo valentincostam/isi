@@ -76,22 +76,34 @@ const store = new Vuex.Store({
     getMateriasRegulares: state => {
       return state.materias.filter(materia => materia.estado === 'regular');
     },
+    getMateriasAno: (state, getters) => (ano) => {
+      return state.materias.filter(materia => materia.ano === ano)
+    },
     getMateriasAnoAnuales: (state, getters) => (ano) => {
-      return state.materias.filter(materia => materia.ano === ano && materia.esAnual)
+      return getters.getMateriasAno(ano).filter(materia => materia.esAnual)
     },
     getMateriasAnoCuatrimestre: (state, getters) => (ano, cuatrimestre) => {
-      return state.materias.filter(materia => materia.ano === ano && materia.cuatrimestre === cuatrimestre)
+      return getters.getMateriasAno(ano).filter(materia => materia.cuatrimestre === cuatrimestre)
     },
     getCantidadMaterias: state => {
       return state.materias.length;
     },
     getCantidadMateriasAprobadas: (state, getters) => {
       return getters.getMateriasAprobadas.length;
-    }
+    },
+    getMateriaCorrelativas: (state, getters) => (id) => {
+      const materia = getters.getMateriaById(id);
+      const regulares = materia.paraCursar.necesitaRegular.map(idMateria => getters.getMateriaById(idMateria).nombre);
+      const aprobadas = materia.paraCursar.necesitaAprobada.map(idMateria => getters.getMateriaById(idMateria).nombre);
+      return { regulares, aprobadas };
+    },
   },
   mutations: {
     cambiarEstadoMateria (state, payload) {
       state.materias.find(materia => materia.id === payload.id).estado = payload.estado;
+    },
+    aprobarAno (state, payload) {
+
     }
   }
 });
@@ -99,7 +111,7 @@ const store = new Vuex.Store({
 const Materia = {
   props: ['id', 'nombre', 'integradora', 'electiva'],
   template: '\
-    <div class="materia" :class="[`${ clases }`]">\
+    <div class="materia" :class="[`${ clases }`]" @click="mostrarCorrelativas">\
       <span class="nombre">{{ nombre }}</span>\
       <em class="tipo" v-if="integradora">Integradora</em>\
       <em class="tipo" v-if="electiva">Electiva</em>\
@@ -181,7 +193,17 @@ const Materia = {
     }
   },
   methods: {
+    mostrarCorrelativas: function () {
+      if (this.seCursa) return;
 
+      const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
+      console.log('Necesita regulares:');
+      correlativas.regulares.forEach(nombre_materia => console.log('- ' + nombre_materia));
+      console.log('Necesita aprobadas:');
+      correlativas.aprobadas.forEach(nombre_materia => console.log('- ' + nombre_materia));
+
+      // alert('Necesita regulares: \n- '+ correlativas.regulares + '\nNecesita aprobadas: \n- ' + correlativas.aprobadas)
+    }
   }
 };
 
@@ -192,6 +214,11 @@ const app = new Vue({
   computed: {
     progreso: function () {
       return (this.$store.getters.getCantidadMateriasAprobadas / this.$store.getters.getCantidadMaterias * 100).toFixed(2);
+    }
+  },
+  methods: {
+    aprobarAno: (ano) => {
+
     }
   }
 });
