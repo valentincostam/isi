@@ -1,11 +1,11 @@
 .materia {
   color: #777;
-  padding: 30px 20px;
+  padding: 15px 20px;
   background: $materia;
   border-bottom: 1px solid darken($materia, 7%);
   position: relative;
   overflow: hidden;
-  transition: all .5s;
+  transition: all .3s;
   cursor: not-allowed;
 
   &:last-child {
@@ -13,15 +13,17 @@
   }
 
   &.desaprobada {
-    border-left: 0 solid transparent;
+    box-shadow: 0 0 0 transparent inset;
   }
 
   &.regular {
-    border-left: 10px solid $regular;
+    box-shadow: 10px 0 0 $regular inset;
+    padding-left: 30px;
   }
 
   &.aprobada {
-    border-left: 10px solid $aprobada;
+    box-shadow: 10px 0 0 $aprobada inset;
+    padding-left: 30px;
   }
 
   .tipo {
@@ -57,32 +59,33 @@
       &:disabled + label {
         color: #aaa;
         background: darken($fondo, 40%);
-        box-shadow: 0 3px 0 darken($fondo, 55%);
         text-shadow: 0 -1px 0 darken($fondo, 55%);
       }
       
-      &:checked + label {
-        box-shadow: none;
-        margin-top: 5px;
+      &:checked + label:nth-child(2) {
+        border-top: 5px solid darken($desaprobada, 10%);
+      }
+
+      &:checked + label:nth-child(4) {
+        border-top: 5px solid darken($regular, 10%);
+      }
+
+      &:checked + label:nth-child(6) {
+        border-top: 5px solid darken($aprobada, 10%);
       }
     }
 
     label {
       display: block;
       width: 50px;
-      height: 50px;
+      height: 100%;
       background: #fff;
       cursor: not-allowed;
       line-height: 50px;
       text-align: center;
       font-weight: bold;
-      border-top: 1px solid rgba(255, 255, 255, .1);
-      border-left: 1px solid rgba(255, 255, 255, .1);
-
-      &:nth-child(2) {
-        border-top-left-radius: 20%;
-        border-bottom-left-radius: 20%;
-      }
+      transition: all .3s;
+      border-top: 0 solid transparent;
 
       // &:nth-child(6) {
       //   border-top-right-radius: 3px;
@@ -103,19 +106,16 @@
 
       &:nth-child(2) {
         background: $desaprobada;
-        box-shadow: 0 3px 0 darken($desaprobada, 20%);
         text-shadow: 0 -1px 0 darken($desaprobada, 10%);
       }
 
       &:nth-child(4) {
         background: $regular;
-        box-shadow: 0 3px 0 darken($regular, 20%);
         text-shadow: 0 -1px 0 darken($regular, 10%);
       }
 
       &:nth-child(6) {
         background: $aprobada;
-        box-shadow: 0 3px 0 darken($aprobada, 20%);
         text-shadow: 0 -1px 0 darken($aprobada, 10%);
       }
     }

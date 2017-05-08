@@ -88,6 +88,32 @@ html(lang="es")
                 :integradora="m.integradora"
                 :electiva="m.electiva")
 
+      section.ano.cuarto-ano
+        h2 Cuarto año
+        h3 Anual
+        materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('4')"
+                :key="m.id"
+                :id="m.id"
+                :nombre="m.nombre"
+                :integradora="m.integradora"
+                :electiva="m.electiva")
+
+        h3 Primer cuatrimestre
+        materia(v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '1')"
+                :key="m.id"
+                :id="m.id"
+                :nombre="m.nombre"
+                :integradora="m.integradora"
+                :electiva="m.electiva")
+
+        h3 Segundo cuatrimestre
+        materia(v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')"
+                :key="m.id"
+                :id="m.id"
+                :nombre="m.nombre"
+                :integradora="m.integradora"
+                :electiva="m.electiva")
+
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")
     script(src="https://unpkg.com/vuex@2.3.0")
     script(src="dist/js/main.min.js")
