@@ -103,7 +103,9 @@ const store = new Vuex.Store({
       state.materias.find(materia => materia.id === payload.id).estado = payload.estado;
     },
     aprobarAno (state, payload) {
-
+      for (var i = 0, len = payload.materias.length; i < len; i++) {
+        payload.materias[i].estado = 'aprobada';
+      }
     }
   }
 });
@@ -217,8 +219,10 @@ const app = new Vue({
     }
   },
   methods: {
-    aprobarAno: (ano) => {
-
+    aprobarAno: (anoAprobado) => {
+      store.commit('aprobarAno', {
+        materias: store.getters.getMateriasAno(anoAprobado)
+      });
     }
   }
 });

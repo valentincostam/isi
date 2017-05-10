@@ -10,7 +10,7 @@ html(lang="es")
   body
     #app
       section.ano.primer-ano
-        h2(@click="aprobarAno(1)") Primer año
+        h2(@click="aprobarAno('1')") Primer año
         h3 Anual
         .anual
           materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('1')"
@@ -39,7 +39,7 @@ html(lang="es")
                   :electiva="m.electiva")
 
       section.ano.segundo-ano
-        h2 Segundo año
+        h2(@click="aprobarAno('2')") Segundo año
         h3 Anual
         .anual
           materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('2')"
@@ -68,7 +68,7 @@ html(lang="es")
                   :electiva="m.electiva")
 
       section.ano.tercer-ano
-        h2 Tercer año
+        h2(@click="aprobarAno('3')") Tercer año
         h3 Anual
         .anual
           materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('3')"
@@ -97,7 +97,7 @@ html(lang="es")
                   :electiva="m.electiva")
 
       section.ano.cuarto-ano
-        h2 Cuarto año
+        h2(@click="aprobarAno('4')") Cuarto año
         h3 Anual
         .anual
           materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('4')"
