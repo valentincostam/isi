@@ -2,24 +2,30 @@
   "name": "plan-estudio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valeco/plan-estudio.git"
+  },
   "author": "Valentín Costa",
   "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "*",
-    "browser-sync": "*",
-    "gulp": "*",
-    "gulp-clean-css": "*",
-    "gulp-concat": "*",
-    "gulp-connect": "*",
-    "gulp-postcss": "*",
-    "gulp-pug": "*",
-    "gulp-sass": "*",
-    "gulp-uglify": "*"
+  "bugs": {
+    "url": "https://github.com/valeco/plan-estudio/issues"
   },
-  "dependencies": {
+  "homepage": "https://github.com/valeco/plan-estudio#readme",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
   }
 }
