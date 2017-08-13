@@ -46,3 +46,19 @@
     background-color: $tercer;
   }
 }
+
+.cuarto-ano {
+  border-left: 5px solid darken($cuarto, 7%);
+
+  h2 {
+    background-color: $cuarto;
+  }
+}
+
+.quinto-ano {
+  border-left: 5px solid darken($quinto, 7%);
+
+  h2 {
+    background-color: $quinto;
+  }
+}

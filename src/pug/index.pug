@@ -124,6 +124,35 @@ html(lang="es")
                   :nombre="m.nombre"
                   :integradora="m.integradora"
                   :electiva="m.electiva")
+                  
+      section.ano.quinto-ano
+        h2(@click="aprobarAno('5')") Quinto año
+        h3 Anual
+        .anual
+          materia(v-for="m in this.$store.getters.getMateriasAnoAnuales('5')"
+                  :key="m.id"
+                  :id="m.id"
+                  :nombre="m.nombre"
+                  :integradora="m.integradora"
+                  :electiva="m.electiva")
+
+        h3 Primer cuatrimestre
+        .cuatrimestre
+          materia(v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('5', '1')"
+                  :key="m.id"
+                  :id="m.id"
+                  :nombre="m.nombre"
+                  :integradora="m.integradora"
+                  :electiva="m.electiva")
+
+        h3 Segundo cuatrimestre
+        .cuatrimestre
+          materia(v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('5', '2')"
+                  :key="m.id"
+                  :id="m.id"
+                  :nombre="m.nombre"
+                  :integradora="m.integradora"
+                  :electiva="m.electiva")
       .barra-progreso(:style="'left: -' + (100 - progreso) + '%'") {{ progreso }}%
 
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")

@@ -44,7 +44,7 @@ let materiasISI = [
   // - Anual
   { id: '26', nombre: 'Administración de Recursos', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['15', '17', '19'], necesitaAprobada: ['8', '11', '13', '14']} },
   { id: '27', nombre: 'Investigación Operativa',    ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
-  { id: '34', nombre: 'Habilitación Profesional',   ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '22', '20'], necesitaAprobada: ['9', '11', '12', '14', '15', '16']} },
+  { id: '47', nombre: 'Habilitación Profesional',   ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '22', '20'], necesitaAprobada: ['9', '11', '12', '14', '15', '16']} },
   // - Primer cuatrimestre
   { id: '28', nombre: 'Legislación',                ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11', '24'],       necesitaAprobada: ['2', '7']} },
   { id: '29', nombre: 'Simulación',                 ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
@@ -56,8 +56,20 @@ let materiasISI = [
 
   // Quinto año
   // - Anual
+  { id: '34', nombre: 'Proyecto Final',                                                      ano: '5', cuatrimestre: '0', esAnual: true, estado: 'desaprobada', integradora: true, electiva: false,   paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
   // - Primer cuatrimestre
+  { id: '35', nombre: 'Sistema de Gestión',                                                  ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27', '29'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
+  { id: '37', nombre: 'Relaciones Humanas',                                                  ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26'], necesitaAprobada: []} },
+  { id: '38', nombre: 'Tecnologías para la Explotación de Datos',                            ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26', '27', '31'], necesitaAprobada: ['29']} },
+  { id: '41', nombre: 'Seguridad en Sistemas de Información',                                ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '45', nombre: 'Consolidación de Tecnologías de la Información y las Comunicaciones', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['15']} },
   // - Segundo cuatrimestre
+  { id: '36', nombre: 'Desarrollo de Aplicaciones Cliente-Servidor', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '39', nombre: 'Administración Gerencial',                    ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
+  { id: '40', nombre: 'Inteligencia Artificial',                     ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['27', '29'], necesitaAprobada: ['17', '21', '23']} },
+  { id: '42', nombre: 'Gestión Avanzada de Datos',                   ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '43', nombre: 'Auditoría de Sistemas de Información',        ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['26', '31'], necesitaAprobada: []} },
+  { id: '44', nombre: 'Emprendedorismo',                             ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['19'], necesitaAprobada: []} },
 ];
 
 const store = new Vuex.Store({
@@ -116,24 +128,41 @@ const store = new Vuex.Store({
 const Materia = {
   props: ['id', 'nombre', 'integradora', 'electiva'],
   template: '\
-    <div class="materia" :class="[`${ estado }`]" @click="mostrarCorrelativas">\
+    <div class="materia" :class="`materia ` + estado + (this.seCursa ? ` se-cursa` : ``)" @click="mostrarCorrelativas">\
       <span class="nombre">{{ nombre }}</span>\
       <em class="tipo" v-if="integradora">Integradora</em>\
       <em class="tipo" v-if="electiva">Electiva</em>\
       <div class="condicion">\
-        <input type="radio" :name="[`m-${ id }`]" :id="[`m-${ id }-desaprobada`]" v-model="estado" :disabled="!seCursa" value="desaprobada">\
+        <input\
+          type="radio"\
+          value="desaprobada"\
+          v-model="estado"\
+          :name="[`m-${ id }`]"\
+          :id="[`m-${ id }-desaprobada`]"\
+          :disabled="!seCursa">\
         <label :for="[`m-${ id }-desaprobada`]">D</label>\
-        <input type="radio" :name="[`m-${ id }`]" :id="[`m-${ id }-regular`]" v-model="estado" :disabled="!seCursa" value="regular">\
+        <input\
+          type="radio"\
+          value="regular"\
+          v-model="estado"\
+          :name="[`m-${ id }`]"\
+          :id="[`m-${ id }-regular`]"\
+          :disabled="!seCursa">\
         <label :for="[`m-${ id }-regular`]">R</label>\
-        <input type="radio" :name="[`m-${ id }`]" :id="[`m-${ id }-aprobada`]" v-model="estado" :disabled="!seCursa" value="aprobada">\
+        <input\
+          type="radio"\
+          value="aprobada"\
+          v-model="estado"\
+          :name="[`m-${ id }`]"\
+          :id="[`m-${ id }-aprobada`]"\
+          :disabled="!seCursa">\
         <label :for="[`m-${ id }-aprobada`]">A</label>\
       </div>\
     </div>',
   computed: {
     estado: {
       get: function () {
-        const sePuedeCursar = this.seCursa ? ' se-cursa' : '';
-        return this.$store.getters.getMateriaById(this.id).estado + sePuedeCursar;
+        return this.$store.getters.getMateriaById(this.id).estado;
       },
       set: function (valor) {
         store.commit('cambiarEstadoMateria', {
@@ -179,7 +208,7 @@ const Materia = {
       console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
       console.log('%c+ Para cursarla necesita regulares:', 'font-weight: bold');
       correlativas.regulares.forEach(nombre_materia => console.log('  - ' + nombre_materia));
-      console.log('%c+ Para cursarla ecesita aprobadas:', 'font-weight: bold');
+      console.log('%c+ Para cursarla necesita aprobadas:', 'font-weight: bold');
       correlativas.aprobadas.forEach(nombre_materia => console.log('  - ' + nombre_materia));
 
       // alert('Necesita regulares: \n- '+ correlativas.regulares + '\nNecesita aprobadas: \n- ' + correlativas.aprobadas)

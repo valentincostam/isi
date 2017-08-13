@@ -69,6 +69,21 @@
           <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
         </div>
       </section>
+      <section class="ano quinto-ano">
+        <h2 @click="aprobarAno('5')">Quinto año</h2>
+        <h3>Anual</h3>
+        <div class="anual">
+          <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('5')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
+        <h3>Primer cuatrimestre</h3>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('5', '1')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
+        <h3>Segundo cuatrimestre</h3>
+        <div class="cuatrimestre">
+          <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('5', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva"></materia>
+        </div>
+      </section>
       <div class="barra-progreso" :style="'left: -' + (100 - progreso) + '%'">{{ progreso }}%</div>
     </div>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
