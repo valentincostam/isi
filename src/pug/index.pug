@@ -124,7 +124,7 @@ html(lang="es")
                   :nombre="m.nombre"
                   :integradora="m.integradora"
                   :electiva="m.electiva")
-                  
+
       section.ano.quinto-ano
         h2(@click="aprobarAno('5')") Quinto año
         h3 Anual
@@ -153,7 +153,17 @@ html(lang="es")
                   :nombre="m.nombre"
                   :integradora="m.integradora"
                   :electiva="m.electiva")
-      .barra-progreso(:style="'left: -' + (100 - progreso) + '%'") {{ progreso }}%
+
+      .info-box
+        .progreso
+          h4 Progreso
+          p {{ progreso }}%
+
+        .horas
+          h4 Horas de Electivas
+          p {{ horas }}#[span /44]
+
+
 
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")
     script(src="https://unpkg.com/vuex@2.3.0")
