@@ -107,8 +107,8 @@ const store = new Vuex.Store({
     },
     getMateriaCorrelativas: (state, getters) => (id) => {
       const materia = getters.getMateriaById(id);
-      const regulares = materia.paraCursar.necesitaRegular.map(idMateria => getters.getMateriaById(idMateria).nombre);
-      const aprobadas = materia.paraCursar.necesitaAprobada.map(idMateria => getters.getMateriaById(idMateria).nombre);
+      const regulares = materia.paraCursar.necesitaRegular.map(idMateria => getters.getMateriaById(idMateria));
+      const aprobadas = materia.paraCursar.necesitaAprobada.map(idMateria => getters.getMateriaById(idMateria));
       return { regulares, aprobadas };
     },
     getMateriasElectivas: state => {
@@ -220,11 +220,9 @@ const Materia = {
       const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
       console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
       console.log('%c+ Para cursarla necesita regulares:', 'font-weight: bold');
-      correlativas.regulares.forEach(nombre_materia => console.log('  - ' + nombre_materia));
+      correlativas.regulares.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
       console.log('%c+ Para cursarla necesita aprobadas:', 'font-weight: bold');
-      correlativas.aprobadas.forEach(nombre_materia => console.log('  - ' + nombre_materia));
-
-      // alert('Necesita regulares: \n- '+ correlativas.regulares + '\nNecesita aprobadas: \n- ' + correlativas.aprobadas)
+      correlativas.aprobadas.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
     }
   }
 };
@@ -237,6 +235,9 @@ const app = new Vue({
     horas: function () {
       const horas_electivas = this.$store.getters.getMateriasElectivasAprobadas.map(m => m.horas);
       return horas_electivas.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    },
+    cantidadMateriasAprobadas: function () {
+      return this.$store.getters.getCantidadMateriasAprobadas;
     },
     progreso: function () {
       const materiasNoElectivas = this.$store.getters.getMateriasNoElectivas;
