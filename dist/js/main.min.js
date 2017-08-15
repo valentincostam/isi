@@ -1,76 +1,76 @@
 let materiasISI = [
   // Primer año
   // - Anual
-  { id: '2', nombre: 'Sistemas y Organizaciones',         horas: '3',  ano: '1', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: true,  electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '2', nombre: 'Sistemas y Organizaciones',         horas: '3',  ano: '1', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: true,  electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
   // - Primer cuatrimestre
-  { id: '3', nombre: 'Álgebra y Geometría Analítica',     horas: '10', ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
-  { id: '4', nombre: 'Matemática Discreta',               horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
-  { id: '5', nombre: 'Química',                           horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
-  { id: '6', nombre: 'Sistemas de Representación',        horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '3', nombre: 'Álgebra y Geometría Analítica',     horas: '10', ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '4', nombre: 'Matemática Discreta',               horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '5', nombre: 'Química',                           horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '6', nombre: 'Sistemas de Representación',        horas: '6',  ano: '1', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
   // - Segundo cuatrimestre
-  { id: '1', nombre: 'Análisis Matemático I',             horas: '10', ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
-  { id: '7', nombre: 'Algoritmos y Estructuras de Datos', horas: '10', ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
-  { id: '8', nombre: 'Arquitectura de Computadoras',      horas: '8',  ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '1', nombre: 'Análisis Matemático I',             horas: '10', ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '7', nombre: 'Algoritmos y Estructuras de Datos', horas: '10', ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
+  { id: '8', nombre: 'Arquitectura de Computadoras',      horas: '8',  ano: '1', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
 
   // Segundo año
   // - Anual
-  { id: '9',  nombre: 'Análisis Matemático II',                horas: '5', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '3'],      necesitaAprobada: []} },
-  { id: '11', nombre: 'Análisis de Sistemas',                  horas: '6', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['2', '7'],      necesitaAprobada: []} },
-  { id: '13', nombre: 'Inglés I',                              horas: '4', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [],              necesitaAprobada: []} },
+  { id: '9',  nombre: 'Análisis Matemático II',                horas: '5', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '3'],      necesitaAprobada: []} },
+  { id: '11', nombre: 'Análisis de Sistemas',                  horas: '6', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['2', '7'],      necesitaAprobada: []} },
+  { id: '13', nombre: 'Inglés I',                              horas: '4', ano: '2', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [],              necesitaAprobada: []} },
   // - Primer cuatrimestre
-  { id: '10', nombre: 'Física I',                              horas: '10', ano: '2', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [],              necesitaAprobada: []} },
-  { id: '12', nombre: 'Sintaxis y Semántica de los Lenguajes', horas: '8', ano: '2', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7'],      necesitaAprobada: []} },
+  { id: '10', nombre: 'Física I',                              horas: '10', ano: '2', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [],              necesitaAprobada: []} },
+  { id: '12', nombre: 'Sintaxis y Semántica de los Lenguajes', horas: '8', ano: '2', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7'],      necesitaAprobada: []} },
   // - Segundo cuatrimestre
-  { id: '14', nombre: 'Paradigmas de Programación',            horas: '8', ano: '2', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7'],      necesitaAprobada: []} },
-  { id: '15', nombre: 'Sistemas Operativos',                   horas: '8', ano: '2', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7', '8'], necesitaAprobada: []} },
+  { id: '14', nombre: 'Paradigmas de Programación',            horas: '8', ano: '2', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7'],      necesitaAprobada: []} },
+  { id: '15', nombre: 'Sistemas Operativos',                   horas: '8', ano: '2', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['4', '7', '8'], necesitaAprobada: []} },
 
   // Tercer año
   // - Anual
-  { id: '16', nombre: 'Inglés II',                       horas: '4', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [],                 necesitaAprobada: ['13']} },
-  { id: '17', nombre: 'Diseño de Sistemas',              horas: '6', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['11', '14'],       necesitaAprobada: ['2', '4', '7']} },
-  { id: '21', nombre: 'Matemática Superior',             horas: '4', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['9'],              necesitaAprobada: ['1', '3']} },
+  { id: '16', nombre: 'Inglés II',                       horas: '4', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [],                 necesitaAprobada: ['13']} },
+  { id: '17', nombre: 'Diseño de Sistemas',              horas: '6', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['11', '14'],       necesitaAprobada: ['2', '4', '7']} },
+  { id: '21', nombre: 'Matemática Superior',             horas: '4', ano: '3', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['9'],              necesitaAprobada: ['1', '3']} },
   // - Primer cuatrimestre
-  { id: '18', nombre: 'Física II',                       horas: '10', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '10'],        necesitaAprobada: ['2', '4', '7']} },
-  { id: '19', nombre: 'Economía',                        horas: '6', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11'],             necesitaAprobada: ['2', '7']} },
-  { id: '20', nombre: 'Gestión de Datos',                horas: '8', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11', '12', '14'], necesitaAprobada: ['2', '4', '7']} },
+  { id: '18', nombre: 'Física II',                       horas: '10', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '10'],        necesitaAprobada: ['2', '4', '7']} },
+  { id: '19', nombre: 'Economía',                        horas: '6', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11'],             necesitaAprobada: ['2', '7']} },
+  { id: '20', nombre: 'Gestión de Datos',                horas: '8', ano: '3', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11', '12', '14'], necesitaAprobada: ['2', '4', '7']} },
   // - Segundo cuatrimestre
-  { id: '22', nombre: 'Comunicaciones',                  horas: '8', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['8', '9', '18'],   necesitaAprobada: ['1', '3', '10']} },
-  { id: '23', nombre: 'Probabilidades y Estadísticas',   horas: '6', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '3'],         necesitaAprobada: []} },
-  { id: '24', nombre: 'Ingeniería y Sociedad',           horas: '4', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: [],                 necesitaAprobada: []} },
-  { id: '25', nombre: 'Metodología de la Investigación', horas: '4', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: [],                 necesitaAprobada: ['2']} },
-  { id: '46', nombre: 'Taller de Programación',          horas: '8', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['12', '14'],       necesitaAprobada: ['7']} },
+  { id: '22', nombre: 'Comunicaciones',                  horas: '8', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['8', '9', '18'],   necesitaAprobada: ['1', '3', '10']} },
+  { id: '23', nombre: 'Probabilidades y Estadísticas',   horas: '6', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['1', '3'],         necesitaAprobada: []} },
+  { id: '24', nombre: 'Ingeniería y Sociedad',           horas: '4', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: [],                 necesitaAprobada: []} },
+  { id: '25', nombre: 'Metodología de la Investigación', horas: '4', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: [],                 necesitaAprobada: ['2']} },
+  { id: '46', nombre: 'Taller de Programación',          horas: '8', ano: '3', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: true, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['12', '14'],       necesitaAprobada: ['7']} },
 
   // Cuarto año
   // - Anual
-  { id: '26', nombre: 'Administración de Recursos', horas: '6', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['15', '17', '19'], necesitaAprobada: ['8', '11', '13', '14']} },
-  { id: '27', nombre: 'Investigación Operativa',    horas: '5', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
-  { id: '47', nombre: 'Habilitación Profesional',   horas: '4', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '22', '20'], necesitaAprobada: ['9', '11', '12', '14', '15', '16']} },
+  { id: '26', nombre: 'Administración de Recursos', horas: '6', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: true,  electiva: false, paraCursar: { necesitaRegular: ['15', '17', '19'], necesitaAprobada: ['8', '11', '13', '14']} },
+  { id: '27', nombre: 'Investigación Operativa',    horas: '5', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
+  // { id: '47', nombre: 'Habilitación Profesional',   horas: '4', ano: '4', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: true, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '22', '20'], necesitaAprobada: ['9', '11', '12', '14', '15', '16']} },
   // - Primer cuatrimestre
-  { id: '28', nombre: 'Legislación',                horas: '4', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11', '24'],       necesitaAprobada: ['2', '7']} },
-  { id: '29', nombre: 'Simulación',                 horas: '8', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
-  { id: '30', nombre: 'Redes de Información',       horas: '8', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['15', '22'],       necesitaAprobada: ['4', '7', '8', '9', '18']} },
+  { id: '28', nombre: 'Legislación',                horas: '4', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['11', '24'],       necesitaAprobada: ['2', '7']} },
+  { id: '29', nombre: 'Simulación',                 horas: '8', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['21', '23'],       necesitaAprobada: ['9']} },
+  { id: '30', nombre: 'Redes de Información',       horas: '8', ano: '4', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['15', '22'],       necesitaAprobada: ['4', '7', '8', '9', '18']} },
   // - Segundo cuatrimestre
-  { id: '31', nombre: 'Ingeniería de Software',     horas: '6', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '20', '23'], necesitaAprobada: ['11', '12', '14']} },
-  { id: '32', nombre: 'Teoría de Control',          horas: '6', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['5', '21'],        necesitaAprobada: ['8', '18']} },
-  { id: '33', nombre: 'Sistemas Distribuidos',      horas: '8', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'],             necesitaAprobada: []} },
+  { id: '31', nombre: 'Ingeniería de Software',     horas: '6', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['17', '20', '23'], necesitaAprobada: ['11', '12', '14']} },
+  { id: '32', nombre: 'Teoría de Control',          horas: '6', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['5', '21'],        necesitaAprobada: ['8', '18']} },
+  { id: '33', nombre: 'Sistemas Distribuidos',      horas: '8', ano: '4', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'],             necesitaAprobada: []} },
 
   // Quinto año
   // - Anual
-  { id: '34', nombre: 'Proyecto Final',                                                      horas: '6', ano: '5', cuatrimestre: '0', esAnual: true, estado: 'desaprobada', integradora: true, electiva: false,   paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
+  { id: '34', nombre: 'Proyecto Final',                                                      horas: '6', ano: '5', cuatrimestre: '0', esAnual: true, estado: 'desaprobada', analista: false, integradora: true, electiva: false,   paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
   // - Primer cuatrimestre
-  { id: '35', nombre: 'Sistema de Gestión',                                                  horas: '8', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27', '29'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
-  { id: '37', nombre: 'Relaciones Humanas',                                                  horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26'], necesitaAprobada: []} },
-  { id: '38', nombre: 'Tecnologías para la Explotación de Datos',                            horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26', '27', '31'], necesitaAprobada: ['29']} },
-  { id: '41', nombre: 'Seguridad en Sistemas de Información',                                horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
-  { id: '45', nombre: 'Consolidación de Tecnologías de la Información y las Comunicaciones', horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['15']} },
-  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '200', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
+  { id: '35', nombre: 'Sistema de Gestión',                                                  horas: '8', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27', '29'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
+  { id: '37', nombre: 'Relaciones Humanas',                                                  horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26'], necesitaAprobada: []} },
+  { id: '38', nombre: 'Tecnologías para la Explotación de Datos',                            horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26', '27', '31'], necesitaAprobada: ['29']} },
+  { id: '41', nombre: 'Seguridad en Sistemas de Información',                                horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '45', nombre: 'Consolidación de Tecnologías de la Información y las Comunicaciones', horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['15']} },
+  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '200', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
   // - Segundo cuatrimestre
-  { id: '36', nombre: 'Desarrollo de Aplicaciones Cliente-Servidor', horas: '5', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
-  { id: '39', nombre: 'Administración Gerencial',                    horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
-  { id: '40', nombre: 'Inteligencia Artificial',                     horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: false, paraCursar: { necesitaRegular: ['27', '29'], necesitaAprobada: ['17', '21', '23']} },
-  { id: '42', nombre: 'Gestión Avanzada de Datos',                   horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
-  { id: '43', nombre: 'Auditoría de Sistemas de Información',        horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['26', '31'], necesitaAprobada: []} },
-  { id: '44', nombre: 'Emprendedorismo',                             horas: '4', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', integradora: false, electiva: true, paraCursar: { necesitaRegular: ['19'], necesitaAprobada: []} },
+  { id: '36', nombre: 'Desarrollo de Aplicaciones Cliente-Servidor', horas: '5', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '39', nombre: 'Administración Gerencial',                    horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
+  { id: '40', nombre: 'Inteligencia Artificial',                     horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['27', '29'], necesitaAprobada: ['17', '21', '23']} },
+  { id: '42', nombre: 'Gestión Avanzada de Datos',                   horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
+  { id: '43', nombre: 'Auditoría de Sistemas de Información',        horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['26', '31'], necesitaAprobada: []} },
+  { id: '44', nombre: 'Emprendedorismo',                             horas: '4', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['19'], necesitaAprobada: []} },
 ];
 
 const store = new Vuex.Store({
@@ -117,11 +117,11 @@ const store = new Vuex.Store({
     getMateriasElectivasAprobadas: (state, getters) => {
       return getters.getMateriasElectivas.filter(materia => materia.estado === 'aprobada');
     },
-    getMateriasNoElectivas: state => {
+    getMateriasObligatorias: state => {
       return state.materias.filter(materia => !materia.electiva);
     },
-    getMateriasNoElectivasAprobadas: (state, getters) => {
-      return getters.getMateriasNoElectivas.filter(materia => materia.estado === 'aprobada');
+    getMateriasObligatoriasAprobadas: (state, getters) => {
+      return getters.getMateriasObligatorias.filter(materia => materia.estado === 'aprobada');
     }
   },
   mutations: {
@@ -139,12 +139,13 @@ const store = new Vuex.Store({
 });
 
 const Materia = {
-  props: ['id', 'nombre', 'integradora', 'electiva'],
+  props: ['id', 'nombre', 'integradora', 'electiva', 'analista'],
   template: '\
     <div :class="`materia ` + estado + (this.seCursa ? ` se-cursa` : ``)" @click="mostrarCorrelativas">\
       <span class="nombre">{{ nombre }}</span>\
       <em class="tipo" v-if="integradora">Integradora</em>\
       <em class="tipo" v-if="electiva">Electiva</em>\
+      <em class="tipo" v-if="analista">AUS</em>\
       <div class="condicion">\
         <input\
           type="radio"\
@@ -232,20 +233,28 @@ const app = new Vue({
   store,
   components: { Materia },
   computed: {
-    horas: function () {
+    horasElectivasAprobadas: function () {
       const horas_electivas = this.$store.getters.getMateriasElectivasAprobadas.map(m => m.horas);
       return horas_electivas.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    },
+    cantidadMaterias: function () {
+      return this.$store.getters.getCantidadMaterias;
     },
     cantidadMateriasAprobadas: function () {
       return this.$store.getters.getCantidadMateriasAprobadas;
     },
     progreso: function () {
-      const materiasNoElectivas = this.$store.getters.getMateriasNoElectivas;
-      const materiasNoElectivasAprobadas = this.$store.getters.getMateriasNoElectivasAprobadas;
-      const procentajeMateriasNoElectivas = materiasNoElectivasAprobadas.length / materiasNoElectivas.length * 100;
-      const porcentajeHoras = this.horas / 44 * 100;
+      const horasObligatorias = this.$store.getters.getMateriasObligatorias.map(m => m.horas).reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      
+      const horasObligatoriasAprobadas = this.$store.getters.getMateriasObligatoriasAprobadas.map(m => m.horas).reduce((a, b) => parseInt(a) + parseInt(b), 0);
 
-      return ((procentajeMateriasNoElectivas + porcentajeHoras) / 2).toFixed(2);
+      const horasElectivas = 44;
+
+      const horasElectivasAprobadas = (this.horasElectivasAprobadas > horasElectivas ? 44 : this.horasElectivasAprobadas);
+
+      const horasTotalesMinimas = horasObligatorias + horasElectivas;
+
+      return ((horasObligatoriasAprobadas + horasElectivasAprobadas) / horasTotalesMinimas * 100).toFixed(2);
     }
   },
   methods: {

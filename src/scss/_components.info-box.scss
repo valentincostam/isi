@@ -1,37 +1,59 @@
 .info-box {
-  background: rgba(0, 0, 0, .6);
-  height: 5em;
+  height: 3em;
   width: 100%;
   color: #fff;
   position: fixed;
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: .5em 25px;
-  box-sizing: border-box;
+  bottom: -1px;
   z-index: 2;
+  display: flex;
+  box-shadow: 0 -1px 0 rgba(12,13,14,0.1),
+              0 -1px 3px rgba(12,13,14,0.1),
+              0 -4px 20px rgba(12,13,14,0.035),
+              0 -1px 1px rgba(12,13,14,0.025);
 }
 
-.info-box h4 {
-  font-size: .75em;
+.info-box .box {
+  color: #111;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  box-sizing: border-box;
+  padding: 0 .2em 5px .2em;
+  flex: 1;
+}
+
+.info-box .box p {
+  font-size: .8em;
   margin: 0;
 }
 
-.info-box p {
-  font-size: 1.3em;
-  margin: 0;
+.info-box .aprobadas {
+  color: #d35400;
 }
 
 .info-box .progreso {
-  color: #f9f340;
+  color: #27ae60;
 }
 
 .info-box .horas {
-  text-align: right;
-  color: #a4f740;
+  color: #2c3e50;
 }
 
-.info-box .horas p span {
-  color: #ccc;
+.bar-progreso {
+  position: absolute;
+  bottom: 0;
+  background: #ccc;
+  width: 100%;
+}
+
+.bar-progreso .inner {  
+  height: 5px;
+  transition: width .5s;
+  background: #27ae60;
+}
+
+[v-cloak] {
+  display: none;
 }
