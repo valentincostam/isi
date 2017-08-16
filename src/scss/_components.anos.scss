@@ -14,6 +14,21 @@
   position: sticky;
   top: 0;
   z-index: 2;
+  cursor: pointer;
+}
+
+.ano h2:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 15px;
+  border-bottom: 4px solid #eee;
+  border-left: 4px solid #eee;
+  right: 13px;
+  top: 13px;
+  transform: rotate(-45deg);
+  transition: border-color .3s;
 }
 
 .ano h3 {
@@ -26,42 +41,30 @@
   text-transform: uppercase;
 }
 
-.primer-ano {
-  border-left: 5px solid darken($primer, 7%);
+$colores-anos: (primer, $primer),
+       (segundo, $segundo),
+       (tercer, $tercer),
+       (cuarto, $cuarto),
+       (quinto, $quinto);
 
-  h2 {
-    background-color: $primer;
+@each $ano, $color in $colores-anos {
+  .#{$ano}-ano {
+    border-left: 5px solid darken($color, 7%);
+
+    h2 {
+      background-color: $color;
+
+      &:after {
+        border-color: darken($color, 7%);
+      }
+
+      &:active {
+        background: darken($color, 7%)
+      }
+    }
   }
 }
 
-.segundo-ano {
-  border-left: 5px solid darken($segundo, 7%);
-
-  h2 {
-    background-color: $segundo;
-  }
-}
-
-.tercer-ano {
-  border-left: 5px solid darken($tercer, 7%);
-
-  h2 {
-    background-color: $tercer;
-  }
-}
-
-.cuarto-ano {
-  border-left: 5px solid darken($cuarto, 7%);
-
-  h2 {
-    background-color: $cuarto;
-  }
-}
-
-.quinto-ano {
-  border-left: 5px solid darken($quinto, 7%);
-
-  h2 {
-    background-color: $quinto;
-  }
+.ano.aprobado h2:after {
+  border-color: #eee;
 }

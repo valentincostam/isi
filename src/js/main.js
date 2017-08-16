@@ -63,7 +63,7 @@ let materiasISI = [
   { id: '38', nombre: 'Tecnologías para la Explotación de Datos',                            horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26', '27', '31'], necesitaAprobada: ['29']} },
   { id: '41', nombre: 'Seguridad en Sistemas de Información',                                horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
   { id: '45', nombre: 'Consolidación de Tecnologías de la Información y las Comunicaciones', horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['15']} },
-  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '200', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
+  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '13', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
   // - Segundo cuatrimestre
   { id: '36', nombre: 'Desarrollo de Aplicaciones Cliente-Servidor', horas: '5', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
   { id: '39', nombre: 'Administración Gerencial',                    horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
@@ -134,6 +134,11 @@ const store = new Vuex.Store({
       for (var i = 0, len = payload.materias.length; i < len; i++) {
         payload.materias[i].estado = 'aprobada';
       }
+    },
+    desaprobarAno (state, payload) {
+      for (var i = 0, len = payload.materias.length; i < len; i++) {
+        payload.materias[i].estado = 'desaprobada';
+      }
     }
   }
 });
@@ -145,7 +150,7 @@ const Materia = {
       <span class="nombre">{{ nombre }}</span>\
       <em class="tipo" v-if="integradora">Integradora</em>\
       <em class="tipo" v-if="electiva">Electiva</em>\
-      <em class="tipo" v-if="analista">AUS</em>\
+      <em class="tipo" v-if="analista">Analista</em>\
       <div class="condicion">\
         <input\
           type="radio"\
@@ -217,13 +222,26 @@ const Materia = {
   methods: {
     mostrarCorrelativas: function () {
       if (this.seCursa) return;
-
+      
       const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
-      console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
-      console.log('%c+ Para cursarla necesita regulares:', 'font-weight: bold');
-      correlativas.regulares.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
-      console.log('%c+ Para cursarla necesita aprobadas:', 'font-weight: bold');
-      correlativas.aprobadas.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
+
+      const correlativasTextoRegulares = correlativas.regulares.map(m => m.nombre).join('\r\n');
+      const correlativasTextoAprobadas = correlativas.aprobadas.map(m => m.nombre).join('\r\n');
+
+      document.getElementById('correlativas').innerHTML = `
+        <h5>Para aprobar ${ this.nombre } necesitás</h5>
+        <p>Regular:</p>
+        <p style="white-space: pre">${ correlativasTextoRegulares }</p>
+        <p>Aprobadas:</p>
+        <p style="white-space: pre">${ correlativasTextoAprobadas }</p>
+      `
+
+      // const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
+      // console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
+      // console.log('%c+ Para cursarla necesita regulares:', 'font-weight: bold');
+      // correlativas.regulares.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
+      // console.log('%c+ Para cursarla necesita aprobadas:', 'font-weight: bold');
+      // correlativas.aprobadas.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
     }
   }
 };
@@ -255,13 +273,36 @@ const app = new Vue({
       const horasTotalesMinimas = horasObligatorias + horasElectivas;
 
       return ((horasObligatoriasAprobadas + horasElectivasAprobadas) / horasTotalesMinimas * 100).toFixed(2);
+    },
+    primerAnoAprobado: function () {
+      return this.$store.getters.getMateriasAno('1').every(m => m.estado === 'aprobada');
+    },
+    segundoAnoAprobado: function () {
+      return this.$store.getters.getMateriasAno('2').every(m => m.estado === 'aprobada');
+    },
+    tercerAnoAprobado: function () {
+      return this.$store.getters.getMateriasAno('3').every(m => m.estado === 'aprobada');
+    },
+    cuartoAnoAprobado: function () {
+      return this.$store.getters.getMateriasAno('4').every(m => m.estado === 'aprobada');
+    },
+    quintoAnoAprobado: function () {
+      return this.$store.getters.getMateriasAno('5').every(m => m.estado === 'aprobada');
     }
   },
   methods: {
     aprobarAno: (anoAprobado) => {
-      store.commit('aprobarAno', {
-        materias: store.getters.getMateriasAno(anoAprobado)
-      });
+      const estaAprobado = store.getters.getMateriasAno(anoAprobado).every(m => m.estado === 'aprobada');
+
+      if (estaAprobado) {
+        store.commit('desaprobarAno', {
+          materias: store.getters.getMateriasAno(anoAprobado)
+        });        
+      } else {
+        store.commit('aprobarAno', {
+          materias: store.getters.getMateriasAno(anoAprobado)
+        });        
+      }
     }
   }
 });

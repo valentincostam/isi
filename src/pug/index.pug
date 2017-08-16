@@ -9,7 +9,7 @@ html(lang="es")
 
   body
     #app
-      section.ano.primer-ano
+      section.ano.primer-ano(:class="{aprobado: primerAnoAprobado}")
         h2(@click="aprobarAno('1')") Primer año
         h3 Anual
         .anual
@@ -41,7 +41,7 @@ html(lang="es")
                   :electiva="m.electiva"
                   :analista="m.analista")
 
-      section.ano.segundo-ano
+      section.ano.segundo-ano(:class="{aprobado: segundoAnoAprobado}")
         h2(@click="aprobarAno('2')") Segundo año
         h3 Anual
         .anual
@@ -73,7 +73,7 @@ html(lang="es")
                   :electiva="m.electiva"
                   :analista="m.analista")
 
-      section.ano.tercer-ano
+      section.ano.tercer-ano(:class="{aprobado: tercerAnoAprobado}")
         h2(@click="aprobarAno('3')") Tercer año
         h3 Anual
         .anual
@@ -105,7 +105,7 @@ html(lang="es")
                   :electiva="m.electiva"
                   :analista="m.analista")
 
-      section.ano.cuarto-ano
+      section.ano.cuarto-ano(:class="{aprobado: cuartoAnoAprobado}")
         h2(@click="aprobarAno('4')") Cuarto año
         h3 Anual
         .anual
@@ -137,7 +137,7 @@ html(lang="es")
                   :electiva="m.electiva"
                   :analista="m.analista")
 
-      section.ano.quinto-ano
+      section.ano.quinto-ano(:class="{aprobado: quintoAnoAprobado}")
         h2(@click="aprobarAno('5')") Quinto año
         h3 Anual
         .anual
@@ -171,16 +171,18 @@ html(lang="es")
 
       .info-box(v-cloak)
         .box.aprobadas
-          p #[strong Aprobadas:] {{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}
+          p #[strong Aprobadas] #[span {{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}]
 
         .box.progreso
-          p #[strong Progreso:] {{ progreso }}%
+          p #[strong Progreso] #[span {{ progreso }}%]
 
         .box.horas
-          p #[strong Horas:] {{ horasElectivasAprobadas }}#[span /44]
+          p #[strong Horas] #[span {{ horasElectivasAprobadas }}/44]
 
         .bar-progreso
           .inner(:style="{width: progreso + '%'}")
+
+      #correlativas
 
 
 

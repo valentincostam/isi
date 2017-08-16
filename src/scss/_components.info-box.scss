@@ -1,5 +1,5 @@
 .info-box {
-  height: 3em;
+  height: 4em;
   width: 100%;
   color: #fff;
   position: fixed;
@@ -27,6 +27,14 @@
 .info-box .box p {
   font-size: .8em;
   margin: 0;
+  
+  strong, span {
+    display: block;
+  }
+
+  span {
+    font-size: 1.5em;
+  }
 }
 
 .info-box .aprobadas {

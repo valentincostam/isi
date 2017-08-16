@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="app">
-      <section class="ano primer-ano">
+      <section class="ano primer-ano" :class="{aprobado: primerAnoAprobado}">
         <h2 @click="aprobarAno('1')">Primer año</h2>
         <h3>Anual</h3>
         <div class="anual">
@@ -24,7 +24,7 @@
           <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('1', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
         </div>
       </section>
-      <section class="ano segundo-ano">
+      <section class="ano segundo-ano" :class="{aprobado: segundoAnoAprobado}">
         <h2 @click="aprobarAno('2')">Segundo año</h2>
         <h3>Anual</h3>
         <div class="anual">
@@ -39,7 +39,7 @@
           <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('2', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
         </div>
       </section>
-      <section class="ano tercer-ano">
+      <section class="ano tercer-ano" :class="{aprobado: tercerAnoAprobado}">
         <h2 @click="aprobarAno('3')">Tercer año</h2>
         <h3>Anual</h3>
         <div class="anual">
@@ -54,7 +54,7 @@
           <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('3', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
         </div>
       </section>
-      <section class="ano cuarto-ano">
+      <section class="ano cuarto-ano" :class="{aprobado: cuartoAnoAprobado}">
         <h2 @click="aprobarAno('4')">Cuarto año</h2>
         <h3>Anual</h3>
         <div class="anual">
@@ -69,7 +69,7 @@
           <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
         </div>
       </section>
-      <section class="ano quinto-ano">
+      <section class="ano quinto-ano" :class="{aprobado: quintoAnoAprobado}">
         <h2 @click="aprobarAno('5')">Quinto año</h2>
         <h3>Anual</h3>
         <div class="anual">
@@ -86,18 +86,19 @@
       </section>
       <div class="info-box" v-cloak>
         <div class="box aprobadas">
-          <p><strong>Aprobadas:</strong> {{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}</p>
+          <p><strong>Aprobadas</strong> <span>{{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}</span></p>
         </div>
         <div class="box progreso">
-          <p><strong>Progreso:</strong> {{ progreso }}%</p>
+          <p><strong>Progreso</strong> <span>{{ progreso }}%</span></p>
         </div>
         <div class="box horas">
-          <p><strong>Horas:</strong> {{ horasElectivasAprobadas }}<span>/44</span></p>
+          <p><strong>Horas</strong> <span>{{ horasElectivasAprobadas }}/44</span></p>
         </div>
         <div class="bar-progreso">
           <div class="inner" :style="{width: progreso + '%'}"></div>
         </div>
       </div>
+      <div id="correlativas"></div>
     </div>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.3.0"></script>
