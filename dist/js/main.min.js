@@ -63,7 +63,7 @@ let materiasISI = [
   { id: '38', nombre: 'Tecnologías para la Explotación de Datos',                            horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['26', '27', '31'], necesitaAprobada: ['29']} },
   { id: '41', nombre: 'Seguridad en Sistemas de Información',                                horas: '5', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
   { id: '45', nombre: 'Consolidación de Tecnologías de la Información y las Comunicaciones', horas: '6', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['15']} },
-  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '13', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
+  { id: '99', nombre: 'Práctica Supervisada',                                                horas: '7', ano: '5', cuatrimestre: '1', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false,  paraCursar: { necesitaRegular: ['26', '28', '30', '31'], necesitaAprobada: ['6', '15', '16', '17', '19', '20', '22', '23', '24']} },
   // - Segundo cuatrimestre
   { id: '36', nombre: 'Desarrollo de Aplicaciones Cliente-Servidor', horas: '5', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true,  paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
   { id: '39', nombre: 'Administración Gerencial',                    horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: false, paraCursar: { necesitaRegular: ['26', '27'], necesitaAprobada: ['15', '17', '19', '21', '23']} },
@@ -225,16 +225,33 @@ const Materia = {
       
       const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
 
-      const correlativasTextoRegulares = correlativas.regulares.map(m => m.nombre).join('\r\n');
-      const correlativasTextoAprobadas = correlativas.aprobadas.map(m => m.nombre).join('\r\n');
+      // const correlativasTextoRegulares = correlativas.regulares.map(m => m.nombre + ' (' + m.estado + ')').join('\r\n');
+      // const correlativasTextoAprobadas = correlativas.aprobadas.map(m => m.nombre + ' (' + m.estado + ')').join('\r\n');
 
-      document.getElementById('correlativas').innerHTML = `
-        <h5>Para aprobar ${ this.nombre } necesitás</h5>
-        <p>Regular:</p>
-        <p style="white-space: pre">${ correlativasTextoRegulares }</p>
-        <p>Aprobadas:</p>
-        <p style="white-space: pre">${ correlativasTextoAprobadas }</p>
-      `
+      const boxDependencias = document.getElementById('box-dependencias');
+
+      let textoRegulares = '';
+      let textoAprobadas = '';
+
+      correlativas.regulares.forEach(m => textoRegulares += `<li class="${ m.estado }">${ m.nombre }</li>`);
+
+      if (correlativas.aprobadas.length > 0)
+        correlativas.aprobadas.forEach(m => textoAprobadas += `<li class="${ m.estado }">${ m.nombre }</li>`)
+      else
+        textoAprobadas = '<li class="ninguna">Ninguna.</li>';
+
+
+      boxDependencias.innerHTML = `
+        <h4>Para cursar <span>${ this.nombre }</span> necesitás:</h5>
+        <p class="condicion-regular">Regular:</p>
+        <ul class="lista-dependencias">${ textoRegulares }</ul>
+        <p class="condicion-aprobada">Aprobadas:</p>
+        <ul class="lista-dependencias">${ textoAprobadas }</ul>
+      `;
+
+      boxDependencias.classList.add('activa');
+
+
 
       // const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
       // console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
@@ -303,6 +320,9 @@ const app = new Vue({
           materias: store.getters.getMateriasAno(anoAprobado)
         });        
       }
+    },
+    cerrarBoxDependencias: () => {
+      document.getElementById('box-dependencias').classList.remove('activa');
     }
   }
 });

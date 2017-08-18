@@ -92,13 +92,13 @@
           <p><strong>Progreso</strong> <span>{{ progreso }}%</span></p>
         </div>
         <div class="box horas">
-          <p><strong>Horas</strong> <span>{{ horasElectivasAprobadas }}/44</span></p>
+          <p><strong>Hs. Electivas</strong> <span>{{ horasElectivasAprobadas }}/44</span></p>
         </div>
         <div class="bar-progreso">
           <div class="inner" :style="{width: progreso + '%'}"></div>
         </div>
       </div>
-      <div id="correlativas"></div>
+      <div id="box-dependencias" @click="cerrarBoxDependencias"></div>
     </div>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.3.0"></script>

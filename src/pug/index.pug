@@ -177,12 +177,12 @@ html(lang="es")
           p #[strong Progreso] #[span {{ progreso }}%]
 
         .box.horas
-          p #[strong Horas] #[span {{ horasElectivasAprobadas }}/44]
+          p #[strong Hs. Electivas] #[span {{ horasElectivasAprobadas }}/44]
 
         .bar-progreso
           .inner(:style="{width: progreso + '%'}")
 
-      #correlativas
+      #box-dependencias(@click="cerrarBoxDependencias")
 
 
 
