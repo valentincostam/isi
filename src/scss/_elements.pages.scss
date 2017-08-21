@@ -1,8 +1,8 @@
 body {
+  -webkit-font-smoothing: antialiased;
   background-color: #eee;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  //user-select: none;
-  padding-bottom: 4em
+  padding-bottom: 4em;
+  user-select: none;
 }

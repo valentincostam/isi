@@ -127,8 +127,6 @@ const store = new Vuex.Store({
   mutations: {
     cambiarEstadoMateria (state, payload) {
       state.materias.find(materia => materia.id === payload.id).estado = payload.estado;
-      // Vue.nextTick();
-      // Vue.set(state.materias.find(materia => materia.id === payload.id), 'estado', payload.estado)
     },
     aprobarAno (state, payload) {
       for (var i = 0, len = payload.materias.length; i < len; i++) {
@@ -146,36 +144,45 @@ const store = new Vuex.Store({
 const Materia = {
   props: ['id', 'nombre', 'integradora', 'electiva', 'analista'],
   template: '\
-    <div :class="`materia ` + estado + (this.seCursa ? ` se-cursa` : ``)" @click="mostrarCorrelativas">\
-      <span class="nombre">{{ nombre }}</span>\
-      <em class="tipo" v-if="integradora">Integradora</em>\
-      <em class="tipo" v-if="electiva">Electiva</em>\
-      <em class="tipo" v-if="analista">Analista</em>\
-      <div class="condicion">\
+    <div :class="`materia materia--` + estado + (this.cursable ? ` materia--cursable` : ``)" @click="mostrarCorrelativas">\
+      <span>{{ nombre }}</span>\
+      <em class="materia__tipo" v-if="integradora">Integradora</em>\
+      <em class="materia__tipo" v-if="electiva">Electiva</em>\
+      <em class="materia__tipo" v-if="analista">Analista</em>\
+      <div class="materia__condicion">\
         <input\
+          class="materia__radio"\
           type="radio"\
           value="desaprobada"\
           v-model="estado"\
           :name="[`m-${ id }`]"\
           :id="[`m-${ id }-desaprobada`]"\
-          :disabled="!seCursa">\
-        <label :for="[`m-${ id }-desaprobada`]">D</label>\
+          :disabled="!cursable">\
+        <label\
+          class="materia__boton materia__boton--desaprobada"\
+          :for="[`m-${ id }-desaprobada`]">D</label>\
         <input\
+          class="materia__radio"\
           type="radio"\
           value="regular"\
           v-model="estado"\
           :name="[`m-${ id }`]"\
           :id="[`m-${ id }-regular`]"\
-          :disabled="!seCursa">\
-        <label :for="[`m-${ id }-regular`]">R</label>\
+          :disabled="!cursable">\
+        <label\
+          class="materia__boton materia__boton--regular"\
+          :for="[`m-${ id }-regular`]">R</label>\
         <input\
+          class="materia__radio"\
           type="radio"\
           value="aprobada"\
           v-model="estado"\
           :name="[`m-${ id }`]"\
           :id="[`m-${ id }-aprobada`]"\
-          :disabled="!seCursa">\
-        <label :for="[`m-${ id }-aprobada`]">A</label>\
+          :disabled="!cursable">\
+        <label\
+          class="materia__boton materia__boton--aprobada"\
+          :for="[`m-${ id }-aprobada`]">A</label>\
       </div>\
     </div>',
   computed: {
@@ -190,7 +197,7 @@ const Materia = {
         });
       }
     },
-    seCursa: {
+    cursable: {
       get: function () {            
         const materia = this.$store.getters.getMateriaById(this.id);
         const necesitaRegulares = materia.paraCursar.necesitaRegular;
@@ -221,12 +228,9 @@ const Materia = {
   },
   methods: {
     mostrarCorrelativas: function () {
-      if (this.seCursa) return;
+      if (this.cursable) return;
       
       const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
-
-      // const correlativasTextoRegulares = correlativas.regulares.map(m => m.nombre + ' (' + m.estado + ')').join('\r\n');
-      // const correlativasTextoAprobadas = correlativas.aprobadas.map(m => m.nombre + ' (' + m.estado + ')').join('\r\n');
 
       const boxDependencias = document.getElementById('box-dependencias');
 
@@ -240,25 +244,14 @@ const Materia = {
       else
         textoAprobadas = '<li class="ninguna">Ninguna.</li>';
 
-
       boxDependencias.innerHTML = `
         <h4>Para cursar <span>${ this.nombre }</span> necesitás:</h5>
         <p class="condicion-regular">Regular:</p>
         <ul class="lista-dependencias">${ textoRegulares }</ul>
         <p class="condicion-aprobada">Aprobadas:</p>
-        <ul class="lista-dependencias">${ textoAprobadas }</ul>
-      `;
+        <ul class="lista-dependencias">${ textoAprobadas }</ul>`;
 
       boxDependencias.classList.add('activa');
-
-
-
-      // const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
-      // console.log('%c' + this.nombre, 'background: steelblue; color: #fff; font-weight: bold;');
-      // console.log('%c+ Para cursarla necesita regulares:', 'font-weight: bold');
-      // correlativas.regulares.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
-      // console.log('%c+ Para cursarla necesita aprobadas:', 'font-weight: bold');
-      // correlativas.aprobadas.forEach(materia => console.log(`- ${ materia.nombre } (${ materia.estado })`));
     }
   }
 };
