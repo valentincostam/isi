@@ -1,0 +1,75 @@
+.estadisticas {
+  bottom: -1px;
+  box-shadow: 0 -1px 0 rgba(12,13,14,0.1),
+              0 -1px 3px rgba(12,13,14,0.1),
+              0 -4px 20px rgba(12,13,14,0.035),
+              0 -1px 1px rgba(12,13,14,0.025);
+  color: #fff;
+  display: flex;
+  height: $estadisticas-alto;
+  // position: fixed;
+  position: sticky;
+  width: 100%;
+  z-index: 3;
+
+  &[v-cloak] {
+    display: none;
+  }
+}
+
+.estadisticas__dato {
+  align-items: center;
+  background: #eee;
+  box-sizing: border-box;
+  color: #111;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 0 .2em $barra-progreso-alto .2em;
+  text-align: center;
+}
+
+.estadisticas__dato p {
+  font-size: .8em;
+  margin: 0;
+}
+
+.estadisticas__dato--aprobadas {
+  color: #d35400;
+}
+
+.estadisticas__dato--progreso {
+  color: #27ae60;
+}
+
+.estadisticas__dato--horas-electivas {
+  color: #2c3e50;
+}
+
+.estadistica__rotulo,
+.estadistica__valor {
+  display: block;
+}
+
+.estadistica__rotulo {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.estadistica__valor {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.estadisticas__barra-progreso {
+  background: #ccc;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.estadisticas__barra-progreso .inner {  
+  background: #27ae60;
+  height: $barra-progreso-alto;
+  transition: width .5s;
+}

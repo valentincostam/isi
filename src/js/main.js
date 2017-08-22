@@ -144,7 +144,7 @@ const store = new Vuex.Store({
 const Materia = {
   props: ['id', 'nombre', 'integradora', 'electiva', 'analista'],
   template: '\
-    <div :class="`materia materia--` + estado + (this.cursable ? ` materia--cursable` : ``)" @click="mostrarCorrelativas">\
+    <div :class="`materia materia--` + estado + (this.cursable ? ` materia--cursable` : ``)" @click="mostrarDependencias">\
       <span>{{ nombre }}</span>\
       <em class="materia__tipo" v-if="integradora">Integradora</em>\
       <em class="materia__tipo" v-if="electiva">Electiva</em>\
@@ -227,31 +227,33 @@ const Materia = {
     }
   },
   methods: {
-    mostrarCorrelativas: function () {
+    mostrarDependencias: function () {
       if (this.cursable) return;
       
       const correlativas = this.$store.getters.getMateriaCorrelativas(this.id);
-
-      const boxDependencias = document.getElementById('box-dependencias');
+      const elementoDependencias = document.querySelectorAll('.dependencias')[0];
 
       let textoRegulares = '';
       let textoAprobadas = '';
 
-      correlativas.regulares.forEach(m => textoRegulares += `<li class="${ m.estado }">${ m.nombre }</li>`);
+      if (correlativas.regulares.length > 0)
+        correlativas.regulares.forEach(m => textoRegulares += `<li class="dependencias__item dependencias__item--${ m.estado }">${ m.nombre }</li>`)
+      else
+        textoRegulares = '<li class="dependencias__item--off">Ninguna.</li>';
 
       if (correlativas.aprobadas.length > 0)
-        correlativas.aprobadas.forEach(m => textoAprobadas += `<li class="${ m.estado }">${ m.nombre }</li>`)
+        correlativas.aprobadas.forEach(m => textoAprobadas += `<li class="dependencias__item dependencias__item--${ m.estado }">${ m.nombre }</li>`)
       else
-        textoAprobadas = '<li class="ninguna">Ninguna.</li>';
+        textoAprobadas = '<li class="dependencias__item--off">Ninguna.</li>';
 
-      boxDependencias.innerHTML = `
-        <h4>Para cursar <span>${ this.nombre }</span> necesitás:</h5>
-        <p class="condicion-regular">Regular:</p>
-        <ul class="lista-dependencias">${ textoRegulares }</ul>
-        <p class="condicion-aprobada">Aprobadas:</p>
-        <ul class="lista-dependencias">${ textoAprobadas }</ul>`;
+      elementoDependencias.innerHTML = `
+        <h4 class="dependencias__titulo">Para cursar <span>${ this.nombre }</span> necesitás:</h5>
+        <h5 class="dependencias__subtitulo dependencias__subtitulo--regular">Regular:</h5>
+        <ul class="dependencias__lista">${ textoRegulares }</ul>
+        <h5 class="dependencias__subtitulo dependencias__subtitulo--aprobadas">Aprobadas:</h5>
+        <ul class="dependencias__lista">${ textoAprobadas }</ul>`;
 
-      boxDependencias.classList.add('activa');
+      elementoDependencias.classList.add('dependencias--visible');
     }
   }
 };
@@ -273,15 +275,10 @@ const app = new Vue({
     },
     progreso: function () {
       const horasObligatorias = this.$store.getters.getMateriasObligatorias.map(m => m.horas).reduce((a, b) => parseInt(a) + parseInt(b), 0);
-      
       const horasObligatoriasAprobadas = this.$store.getters.getMateriasObligatoriasAprobadas.map(m => m.horas).reduce((a, b) => parseInt(a) + parseInt(b), 0);
-
       const horasElectivas = 44;
-
       const horasElectivasAprobadas = (this.horasElectivasAprobadas > horasElectivas ? 44 : this.horasElectivasAprobadas);
-
       const horasTotalesMinimas = horasObligatorias + horasElectivas;
-
       return ((horasObligatoriasAprobadas + horasElectivasAprobadas) / horasTotalesMinimas * 100).toFixed(2);
     },
     primerAnoAprobado: function () {
@@ -314,8 +311,8 @@ const app = new Vue({
         });        
       }
     },
-    cerrarBoxDependencias: () => {
-      document.getElementById('box-dependencias').classList.remove('activa');
+    ocultarDependencias: () => {
+      document.querySelectorAll('.dependencias')[0].classList.remove('dependencias--visible');
     }
   }
 });

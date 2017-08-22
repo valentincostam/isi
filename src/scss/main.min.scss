@@ -1,5 +1,6 @@
 @import 'settings.fonts';
 @import 'settings.colors';
+@import 'settings.sizes';
 
 @import 'generic.normalize';
 @import 'generic.box-sizing';
@@ -13,5 +14,5 @@
 
 @import 'components.anos';
 @import 'components.materias';
-@import 'components.info-box';
-@import 'components.box-dependencias';
+@import 'components.estadisticas';
+@import 'components.dependencias';

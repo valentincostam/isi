@@ -54,21 +54,24 @@
         <h3 class="ano__subtitulo">Segundo cuatrimestre</h3>
         <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('5', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
       </div>
-      <div class="info-box" v-cloak>
-        <div class="box aprobadas">
-          <p><strong>Aprobadas</strong> <span>{{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}</span></p>
+      <div class="estadisticas" v-cloak>
+        <div class="estadisticas__dato estadisticas__dato--aprobadas">
+          <p><strong class="estadistica__rotulo">Aprobadas</strong><span class="estadistica__valor">{{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}</span></p>
         </div>
-        <div class="box progreso">
-          <p><strong>Progreso</strong> <span>{{ progreso }}%</span></p>
+        <div class="estadisticas__dato estadisticas__dato--progreso">
+          <p><strong class="estadistica__rotulo">Progreso</strong><span class="estadistica__valor">{{ progreso }}%</span></p>
         </div>
-        <div class="box horas">
-          <p><strong>Hs. Electivas</strong> <span>{{ horasElectivasAprobadas }}/44</span></p>
+        <div class="estadisticas__dato estadisticas__dato--horas-electivas">
+          <p><strong class="estadistica__rotulo">Hs. Electivas</strong><span class="estadistica__valor">{{ horasElectivasAprobadas }}/44</span></p>
         </div>
-        <div class="bar-progreso">
+        <div class="estadisticas__barra-progreso">
           <div class="inner" :style="{width: progreso + '%'}"></div>
         </div>
       </div>
-      <div id="box-dependencias" @click="cerrarBoxDependencias"></div>
+      <div class="dependencias" @click="ocultarDependencias"></div>
+      <footer class="footer">
+        <p>Valentín Costa (C) 2017</p>
+      </footer>
     </div>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.3.0"></script>

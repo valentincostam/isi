@@ -174,22 +174,29 @@ html(lang="es")
           :electiva="m.electiva"
           :analista="m.analista")
 
-      .info-box(v-cloak)
-        .box.aprobadas
-          p #[strong Aprobadas] #[span {{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}]
+      .estadisticas(v-cloak)
+        .estadisticas__dato.estadisticas__dato--aprobadas
+          p
+            strong.estadistica__rotulo Aprobadas
+            span.estadistica__valor {{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}
 
-        .box.progreso
-          p #[strong Progreso] #[span {{ progreso }}%]
+        .estadisticas__dato.estadisticas__dato--progreso
+          p
+            strong.estadistica__rotulo Progreso
+            span.estadistica__valor {{ progreso }}%
 
-        .box.horas
-          p #[strong Hs. Electivas] #[span {{ horasElectivasAprobadas }}/44]
+        .estadisticas__dato.estadisticas__dato--horas-electivas
+          p
+            strong.estadistica__rotulo Hs. Electivas
+            span.estadistica__valor {{ horasElectivasAprobadas }}/44
 
-        .bar-progreso
+        .estadisticas__barra-progreso
           .inner(:style="{width: progreso + '%'}")
 
-      #box-dependencias(@click="cerrarBoxDependencias")
+      .dependencias(@click="ocultarDependencias")
 
-
+      footer.footer
+        p Valentín Costa (C) 2017
 
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")
     script(src="https://unpkg.com/vuex@2.3.0")
