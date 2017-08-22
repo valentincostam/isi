@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="dist/css/main.min.css">
   </head>
   <body>
-    <div id="app">
+    <header class="header"><img class="header__logo" src="./dist/img/logo_utn_cdu.png" alt="Logo UTN Concepción del Uruguay">
+      <h1 class="header__titulo"><span>Ingeniería en Sistemas de Información</span><strong>Plan de Estudio</strong></h1>
+    </header>
+    <section class="informacion">
+      <h3>Cómo usar esta herramienta</h3>
+      <p>Pasá el cursor <strong>sobre las materias</strong> (o <strong>hacé <em>tap</em></strong> si estás en tu celular o tablet) para indicar si las <strong class="subrayado aprobada">aprobaste</strong>, están <strong class="subrayado regular">regulares</strong> o <strong class="subrayado desaprobada">desaprobadas</strong>.</p>
+      <p><strong>Hacé click (o <em>tap</em>) sobre el título del año</strong> para aprobar todas sus materias.  </p>
+      <p>Si no podés cursar alguna materia, <strong>hacéle click (o <em>tap</em>) para ver cuáles son sus requisitos</strong>. </p>
+      <p>A medida que vayas aprobando y regularizando materias, <strong>se habilitarán sus correlativas</strong>.</p>
+    </section>
+    <main id="app">
       <div class="ano ano--primero" :class="{'ano--aprobado': primerAnoAprobado}">
         <h2 class="ano__titulo" @click="aprobarAno('1')">Primer año</h2>
         <h3 class="ano__subtitulo">Anual</h3>
@@ -45,7 +55,7 @@
         <h3 class="ano__subtitulo">Segundo cuatrimestre</h3>
         <materia v-for="m in this.$store.getters.getMateriasAnoCuatrimestre('4', '2')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
       </div>
-      <div class="ano ano--quinto" :class="{'ano--aprobado': quintoAnoAprobado}">
+      <div class="ano ano--quinto ano--ultimo" :class="{'ano--aprobado': quintoAnoAprobado}">
         <h2 class="ano__titulo" @click="aprobarAno('5')">Quinto año</h2>
         <h3 class="ano__subtitulo">Anual</h3>
         <materia v-for="m in this.$store.getters.getMateriasAnoAnuales('5')" :key="m.id" :id="m.id" :nombre="m.nombre" :integradora="m.integradora" :electiva="m.electiva" :analista="m.analista"></materia>
@@ -69,10 +79,11 @@
         </div>
       </div>
       <div class="dependencias" @click="ocultarDependencias"></div>
-      <footer class="footer">
-        <p>Valentín Costa (C) 2017</p>
-      </footer>
-    </div>
+    </main>
+    <footer class="footer">
+      <p class="footer__authoring">Hecho con <span>❤</span> por <strong>Valentín Costa</strong></p>
+      <p class="footer__version">Plan de Estudio — Versión 1.0.0</p>
+    </footer>
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.3.0"></script>
     <script src="dist/js/main.min.js"></script>

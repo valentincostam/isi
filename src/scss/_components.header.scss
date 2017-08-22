@@ -1,0 +1,28 @@
+.header {
+  padding: 1rem;
+}
+
+.header__logo {
+  display: block;
+  margin-bottom: 1rem;
+  opacity: .75;
+  width: 5em;
+}
+
+.header__titulo {
+  color: #333;
+  margin: 0;
+
+  span {
+    color: #444;
+    display: block;
+    font-size: .42em;
+    font-weight: normal;
+  }
+
+  strong {
+    display: block;
+    font-size: 1em;
+    line-height: .9;
+  }
+}

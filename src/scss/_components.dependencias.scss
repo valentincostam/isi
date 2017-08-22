@@ -4,8 +4,10 @@
   box-sizing: border-box;
   color: #fff;
   font-size: .9em;
+  overflow-y: auto;
   padding: 1em;
   position: fixed;
+  max-height: 75vh;
   transform: translateY(100%);
   transition: transform .3s ease-in-out;
   width: 100%;

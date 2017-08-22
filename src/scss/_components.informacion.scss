@@ -1,0 +1,39 @@
+.informacion {
+  background: lighten(#f7e399, 8%);
+  border-radius: .3em;
+  border: 1px solid darken(#f7e399, 5%);
+  margin: 0 1rem 1rem 1rem;
+  padding: 1em;
+
+  h3 {
+    color: #957a41;
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: .5em;
+  }
+
+  p {
+    color: #333;
+    font-size: .9em;
+    margin: 0 0 .8em 0;
+  }
+
+  .subrayado {
+    border-bottom: 2px solid #ccc;
+  }
+
+  .aprobada {
+    color: $aprobada;
+    border-color: $aprobada;
+  }
+
+  .regular {
+    color: $regular;
+    border-color: $regular;
+  }
+
+  .desaprobada {
+    color: $desaprobada;
+    border-color: $desaprobada;
+  }
+}

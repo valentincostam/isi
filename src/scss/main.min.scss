@@ -8,11 +8,13 @@
 @import 'elements.pages';
 @import 'elements.links';
 @import 'elements.selection-colors';
-@import 'elements.typography';
 @import 'elements.images';
 @import 'elements.fields';
 
+@import 'components.header';
+@import 'components.informacion';
 @import 'components.anos';
 @import 'components.materias';
 @import 'components.estadisticas';
 @import 'components.dependencias';
+@import 'components.footer';

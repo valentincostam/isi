@@ -8,7 +8,20 @@ html(lang="es")
     link(rel="stylesheet", href="dist/css/main.min.css")
 
   body
-    #app
+    header.header
+      img.header__logo(src="./dist/img/logo_utn_cdu.png", alt="Logo UTN Concepción del Uruguay")
+      h1.header__titulo
+        span Ingeniería en Sistemas de Información
+        strong Plan de Estudio
+
+    section.informacion
+      h3 Cómo usar esta herramienta
+      p Pasá el cursor #[strong sobre las materias] (o #[strong hacé #[em tap]] si estás en tu celular o tablet) para indicar si las #[strong.subrayado.aprobada aprobaste], están #[strong.subrayado.regular regulares] o #[strong.subrayado.desaprobada desaprobadas].
+      p #[strong Hacé click (o #[em tap]) sobre el título del año] para aprobar todas sus materias.  
+      p Si no podés cursar alguna materia, #[strong hacéle click (o #[em tap]) para ver cuáles son sus requisitos]. 
+      p A medida que vayas aprobando y regularizando materias, #[strong se habilitarán sus correlativas].
+
+    main#app
       //- Primer año
       .ano.ano--primero(:class="{'ano--aprobado': primerAnoAprobado}")
         h2.ano__titulo(@click="aprobarAno('1')") Primer año
@@ -142,7 +155,7 @@ html(lang="es")
           :analista="m.analista")
 
       //- Quinto año
-      .ano.ano--quinto(:class="{'ano--aprobado': quintoAnoAprobado}")
+      .ano.ano--quinto.ano--ultimo(:class="{'ano--aprobado': quintoAnoAprobado}")
         h2.ano__titulo(@click="aprobarAno('5')") Quinto año
         h3.ano__subtitulo Anual
         materia(
@@ -195,8 +208,9 @@ html(lang="es")
 
       .dependencias(@click="ocultarDependencias")
 
-      footer.footer
-        p Valentín Costa (C) 2017
+    footer.footer
+      p.footer__authoring Hecho con #[span ❤] por #[strong Valentín Costa]
+      p.footer__version Plan de Estudio — Versión 1.0.0
 
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")
     script(src="https://unpkg.com/vuex@2.3.0")
