@@ -31,6 +31,19 @@
   padding-left: 30px;
 }
 
+.materia--cursando {
+  box-shadow: 10px 0 0 $cursando inset;
+  padding-left: 30px;
+}
+
+.materia__detalles {
+  display: flex;
+}
+
+.materia__descripcion {
+  flex: 1;
+}
+
 .materia__tipo {
   background: darken($materia, 7%);
   border-radius: 4px;
@@ -40,6 +53,14 @@
   padding: 4px 6px;
   text-transform: uppercase;
   vertical-align: bottom;
+}
+
+.materia__horas {
+  color: #ccc;
+  font-weight: bold;
+  display: flex;
+  margin: auto;
+  padding-left: .3em;
 }
 
 .materia__condicion {
@@ -76,6 +97,10 @@
 
   &:checked + .materia__boton--aprobada {
     border-top: 5px solid darken($aprobada, 10%);
+  }
+
+  &:checked + .materia__boton--cursando {
+    border-top: 5px solid darken($cursando, 10%);
   }
 }
 
@@ -115,5 +140,10 @@
   .materia__boton--aprobada {
     background: $aprobada;
     text-shadow: 0 -1px 0 darken($aprobada, 10%);
+  }
+
+  .materia__boton--cursando {
+    background: $cursando;
+    text-shadow: 0 -1px 0 darken($cursando, 10%);
   }
 }

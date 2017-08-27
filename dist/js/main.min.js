@@ -142,13 +142,18 @@ const store = new Vuex.Store({
 });
 
 const Materia = {
-  props: ['id', 'nombre', 'integradora', 'electiva', 'analista'],
+  props: ['id', 'nombre', 'horas', 'integradora', 'electiva', 'analista'],
   template: '\
     <div :class="`materia materia--` + estado + (this.cursable ? ` materia--cursable` : ``)" @click="mostrarDependencias">\
-      <span>{{ nombre }}</span>\
-      <em class="materia__tipo" v-if="integradora">Integradora</em>\
-      <em class="materia__tipo" v-if="electiva">Electiva</em>\
-      <em class="materia__tipo" v-if="analista">Analista</em>\
+      <div class="materia__detalles">\
+        <span class="materia__descripcion">\
+          {{ nombre }}\
+          <em class="materia__tipo" v-if="integradora">Integradora</em>\
+          <em class="materia__tipo" v-if="electiva">Electiva</em>\
+          <em class="materia__tipo" v-if="analista">Analista</em>\
+        </span>\
+        <span class="materia__horas">{{ horas }} hs.</span>\
+      </div>\
       <div class="materia__condicion">\
         <input\
           class="materia__radio"\
@@ -183,6 +188,17 @@ const Materia = {
         <label\
           class="materia__boton materia__boton--aprobada"\
           :for="[`m-${ id }-aprobada`]">A</label>\
+        <input\
+          class="materia__radio"\
+          type="radio"\
+          value="cursando"\
+          v-model="estado"\
+          :name="[`m-${ id }`]"\
+          :id="[`m-${ id }-cursando`]"\
+          :disabled="!cursable">\
+        <label\
+          class="materia__boton materia__boton--cursando"\
+          :for="[`m-${ id }-cursando`]">C</label>\
       </div>\
     </div>',
   computed: {
@@ -205,12 +221,6 @@ const Materia = {
         const estanRegulares = this.$store.getters.getMateriasRegulares.map(m => m.id);
         const estanAprobadas = this.$store.getters.getMateriasAprobadas.map(m => m.id);
         const regularesYAprobadas = estanRegulares.concat(estanAprobadas);
-
-        function arrayContainsArray (superset, subset) {
-          return subset.every(function (value) {
-            return (superset.indexOf(value) >= 0);
-          });
-        }
 
         const sePuedeCursar = arrayContainsArray(regularesYAprobadas, necesitaRegulares)
             && arrayContainsArray(estanAprobadas, necesitaAprobadas);
@@ -298,18 +308,14 @@ const app = new Vue({
     }
   },
   methods: {
-    aprobarAno: (anoAprobado) => {
-      const estaAprobado = store.getters.getMateriasAno(anoAprobado).every(m => m.estado === 'aprobada');
+    aprobarAno: (ano) => {
+      const materiasAno = store.getters.getMateriasAno(ano);
+      const anoEstaAprobado = materiasAno.every(m => m.estado === 'aprobada');
 
-      if (estaAprobado) {
-        store.commit('desaprobarAno', {
-          materias: store.getters.getMateriasAno(anoAprobado)
-        });        
-      } else {
-        store.commit('aprobarAno', {
-          materias: store.getters.getMateriasAno(anoAprobado)
-        });        
-      }
+      if (anoEstaAprobado)
+        store.commit('desaprobarAno', { materias: materiasAno });        
+      else
+        store.commit('aprobarAno', { materias: materiasAno });
     },
     ocultarDependencias: () => {
       document.querySelectorAll('.dependencias')[0].classList.remove('dependencias--visible');
@@ -317,6 +323,12 @@ const app = new Vue({
   }
 });
 
+
+function arrayContainsArray (superset, subset) {
+  return subset.every(function (value) {
+    return (superset.indexOf(value) >= 0);
+  });
+}
 
 const elementoInformacion = document.querySelectorAll('.informacion')[0];
 const elementoInformacionCuerpo = elementoInformacion.querySelectorAll('.informacion__cuerpo')[0]
