@@ -15,11 +15,12 @@ html(lang="es")
         strong Plan de Estudio
 
     section.informacion
-      h3 Cómo usar esta herramienta
-      p Pasá el cursor #[strong sobre las materias] (o #[strong hacé #[em tap]] si estás en tu celular o tablet) para indicar si las #[strong.subrayado.aprobada aprobaste], están #[strong.subrayado.regular regulares] o #[strong.subrayado.desaprobada desaprobadas].
-      p #[strong Hacé click (o #[em tap]) sobre el título del año] para aprobar todas sus materias.  
-      p Si no podés cursar alguna materia, #[strong hacéle click (o #[em tap]) para ver cuáles son sus requisitos]. 
-      p A medida que vayas aprobando y regularizando materias, #[strong se habilitarán sus correlativas].
+      h3.informacion__titulo #[span (+)] Cómo usar esta herramienta...
+      .informacion__cuerpo
+        p.informacion__parrafo Pasá el cursor #[strong sobre las materias] (o #[strong hacé #[em tap]] si estás en tu celular o tablet) para indicar si las #[strong.subrayado.aprobada aprobaste], están #[strong.subrayado.regular regulares] o #[strong.subrayado.desaprobada desaprobadas].
+        p.informacion__parrafo #[strong Hacé click (o #[em tap]) sobre el título del año] para aprobar todas sus materias.  
+        p.informacion__parrafo Si no podés cursar alguna materia, #[strong hacéle click (o #[em tap]) para ver cuáles son sus requisitos]. 
+        p.informacion__parrafo A medida que vayas aprobando y regularizando materias, #[strong se habilitarán sus correlativas].
 
     main#app
       //- Primer año
@@ -201,6 +202,11 @@ html(lang="es")
         .estadisticas__dato.estadisticas__dato--horas-electivas
           p
             strong.estadistica__rotulo Hs. Electivas
+            span.estadistica__valor {{ horasElectivasAprobadas }}/44
+
+        .estadisticas__dato
+          p
+            strong.estadistica__rotulo Carga Horaria
             span.estadistica__valor {{ horasElectivasAprobadas }}/44
 
         .estadisticas__barra-progreso

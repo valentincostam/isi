@@ -316,3 +316,14 @@ const app = new Vue({
     }
   }
 });
+
+
+const elementoInformacion = document.querySelectorAll('.informacion')[0];
+const elementoInformacionCuerpo = elementoInformacion.querySelectorAll('.informacion__cuerpo')[0]
+const elementoInformacionTitulo = elementoInformacion.querySelectorAll('.informacion__titulo span')[0]
+
+elementoInformacion.addEventListener('click', () => {
+  elementoInformacionCuerpo.classList.toggle('informacion__cuerpo--activo');
+
+  elementoInformacionTitulo.textContent = elementoInformacionTitulo.textContent == '(+)' ? '(-)' : '(+)';
+});
