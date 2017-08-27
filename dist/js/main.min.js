@@ -90,6 +90,9 @@ const store = new Vuex.Store({
     getMateriasRegulares: state => {
       return state.materias.filter(materia => materia.estado === 'regular');
     },
+    getMateriasCursando: state => {
+      return state.materias.filter(materia => materia.estado === 'cursando');
+    },
     getMateriasAno: (state, getters) => (ano) => {
       return state.materias.filter(materia => materia.ano === ano)
     },
@@ -150,7 +153,6 @@ const Materia = {
           {{ nombre }}\
           <em class="materia__tipo" v-if="integradora">Integradora</em>\
           <em class="materia__tipo" v-if="electiva">Electiva</em>\
-          <em class="materia__tipo" v-if="analista">Analista</em>\
         </span>\
         <span class="materia__horas">{{ horas }} hs.</span>\
       </div>\
@@ -261,7 +263,8 @@ const Materia = {
         <h5 class="dependencias__subtitulo dependencias__subtitulo--regular">Regular:</h5>
         <ul class="dependencias__lista">${ textoRegulares }</ul>
         <h5 class="dependencias__subtitulo dependencias__subtitulo--aprobadas">Aprobadas:</h5>
-        <ul class="dependencias__lista">${ textoAprobadas }</ul>`;
+        <ul class="dependencias__lista">${ textoAprobadas }</ul>
+        <p class="dependencias__pista">CLICK O TAP PARA CERRAR</p>`;
 
       elementoDependencias.classList.add('dependencias--visible');
     }
@@ -274,8 +277,12 @@ const app = new Vue({
   components: { Materia },
   computed: {
     horasElectivasAprobadas: function () {
-      const horas_electivas = this.$store.getters.getMateriasElectivasAprobadas.map(m => m.horas);
-      return horas_electivas.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      const horasElectivas = this.$store.getters.getMateriasElectivasAprobadas.map(m => m.horas);
+      return horasElectivas.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    },
+    horasSemanalesCursando: function () {
+      const horasSemanales = this.$store.getters.getMateriasCursando.map(m => m.horas);
+      return horasSemanales.reduce((a, b) => parseInt(a) + parseInt(b), 0);
     },
     cantidadMaterias: function () {
       return this.$store.getters.getCantidadMaterias;

@@ -4,6 +4,7 @@
     <title>Plan de Estudio - Ingenería en Sistemas de Información</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700">
     <link rel="stylesheet" href="dist/css/main.min.css">
   </head>
@@ -14,10 +15,15 @@
     <section class="informacion">
       <h3 class="informacion__titulo"><span>(+)</span> ¿Cómo uso esta herramienta?</h3>
       <div class="informacion__cuerpo">
-        <p class="informacion__parrafo">Pasá el cursor <strong>sobre las materias</strong> (o <strong>hacé <em>tap</em></strong> si estás en tu celular o tablet) para indicar si las <strong class="subrayado aprobada">aprobaste</strong>, están <strong class="subrayado regular">regulares</strong> o <strong class="subrayado desaprobada">desaprobadas</strong>.</p>
-        <p class="informacion__parrafo"><strong>Hacé click (o <em>tap</em>) sobre el título del año</strong> para aprobar todas sus materias.  </p>
-        <p class="informacion__parrafo">Si no podés cursar alguna materia, <strong>hacéle click (o <em>tap</em>) para ver cuáles son sus requisitos</strong>. </p>
-        <p class="informacion__parrafo">A medida que vayas aprobando y regularizando materias, <strong>se habilitarán sus correlativas</strong>.</p>
+        <p class="informacion__parrafo">Poné el cursor <strong>sobre las materias</strong> (o <strong>hacé <em>tap</em></strong> si estás en tu celular o tablet) para indicar si las <strong class="subrayado aprobada">aprobaste</strong>, están <strong class="subrayado regular">regulares</strong> o <strong class="subrayado desaprobada">desaprobadas</strong>, o las estás <strong class="subrayado cursando">cursando</strong>.</p>
+        <p class="informacion__parrafo"><strong>Hacé click (o <em>tap</em>) sobre el título del año</strong> para aprobar todas sus materias (o desaprobarlas, si ya lo están). No podrás aprobar un año completo si alguna de sus materias está deshabilitada.</p>
+        <p class="informacion__parrafo">Si no podés cursar alguna materia, <strong>hacéle click (o <em>tap</em>) para ver cuáles son sus requisitos</strong>. A medida que vayas aprobando y regularizando materias, <strong>se habilitarán sus correlativas</strong>.</p>
+        <p class="informacion__parrafo">Podrás conocer la cantidad de materias aprobadas, tu progreso en la carrera, las horas de electivas acumuladas y tu carga horaria semanal de cursada.</p>
+        <p class="informacion__parrafo"><strong>Consideraciones</strong>:</p>
+        <ul class="informacion__lista">
+          <li><strong>Proyecto Final</strong> es la última materia en aprobarse.</li>
+          <li>Las horas semanales de <strong>Práctica Supervisada</strong> varía con cada estudiante. Las aquí expuestas fueron determinadas de forma arbitraria.</li>
+        </ul>
       </div>
     </section>
     <main id="app">
@@ -68,13 +74,16 @@
       </div>
       <div class="estadisticas" v-cloak>
         <div class="estadisticas__dato estadisticas__dato--aprobadas">
-          <p><strong class="estadistica__rotulo">Aprobadas</strong><span class="estadistica__valor">{{ cantidadMateriasAprobadas }}/{{ cantidadMaterias }}</span></p>
-        </div>
-        <div class="estadisticas__dato estadisticas__dato--progreso">
-          <p><strong class="estadistica__rotulo">Progreso</strong><span class="estadistica__valor">{{ progreso }}%</span></p>
+          <p><strong class="estadistica__rotulo">Aprobadas: </strong><span class="estadistica__valor">{{ cantidadMateriasAprobadas }}<em>/{{ cantidadMaterias }}</em></span></p>
         </div>
         <div class="estadisticas__dato estadisticas__dato--horas-electivas">
-          <p><strong class="estadistica__rotulo">Hs. Electivas</strong><span class="estadistica__valor">{{ horasElectivasAprobadas }}/44</span></p>
+          <p><strong class="estadistica__rotulo">Hs. Electivas: </strong><span class="estadistica__valor">{{ horasElectivasAprobadas }}<em>/44</em></span></p>
+        </div>
+        <div class="estadisticas__dato estadisticas__dato--progreso">
+          <p><strong class="estadistica__rotulo">Progreso: </strong><span class="estadistica__valor">{{ progreso }}%</span></p>
+        </div>
+        <div class="estadisticas__dato estadisticas__dato--horas-semanales">
+          <p><strong class="estadistica__rotulo">Hs. Semanales: </strong><span class="estadistica__valor">{{ horasSemanalesCursando }}</span></p>
         </div>
         <div class="estadisticas__barra-progreso">
           <div class="inner" :style="{width: progreso + '%'}"></div>

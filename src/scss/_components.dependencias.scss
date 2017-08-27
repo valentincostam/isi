@@ -16,6 +16,10 @@
   &.dependencias--visible {
     transform: translateY(calc(-#{$estadisticas-alto} + 1px));
   }
+
+  @media (min-width: $tablet) {
+    width: 30rem;
+  }
 }
 
 .dependencias__titulo {
@@ -71,4 +75,13 @@
   &:after {
     display: none;
   }
+}
+
+.dependencias__pista {
+  bottom: 0;
+  color: #999;
+  font-size: .7em;
+  margin: 1.3em;
+  position: absolute;
+  right: 0;
 }

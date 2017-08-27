@@ -1,5 +1,18 @@
 .ano {
   margin: 0 auto;
+  background: darken($materia, 7%);
+
+  @media (min-width: $tablet) {
+    flex: 1 0 50%;
+  }
+
+  @media (min-width: $laptop) {
+    flex: 1 0 33.333333%;
+  }
+
+  @media (min-width: $desktop) {
+    flex: 1 0 25%;
+  }
 }
 
 @each $ano, $color in $anos {
