@@ -173,7 +173,7 @@ html(lang="es")
           :analista="m.analista")
 
       //- Quinto año
-      .ano.ano--quinto.ano--ultimo(:class="{'ano--aprobado': quintoAnoAprobado}")
+      .ano.ano--quinto(:class="{'ano--aprobado': quintoAnoAprobado}")
         h2.ano__titulo(@click="aprobarAno('5')") Quinto año
         h3.ano__subtitulo Anual
         materia(

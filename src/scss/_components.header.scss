@@ -7,6 +7,14 @@
   margin-bottom: 1rem;
   opacity: .75;
   width: 5em;
+
+  @media (min-width: $tablet) {
+    float: left;
+    height: 2.5em;
+    width: auto;
+    margin-top: .35em;
+    margin-right: 1em;
+  }
 }
 
 .header__titulo {

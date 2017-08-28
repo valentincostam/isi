@@ -29,11 +29,12 @@
   width: 50%;
 
   @media (min-width: $tablet) {
-    flex: 1 1 25%;
+    flex: 1 1 25%;    
+    font-size: 1.2em;
   }
 
   @media (min-width: $laptop) {
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 }
 

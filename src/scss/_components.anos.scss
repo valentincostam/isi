@@ -13,6 +13,10 @@
   @media (min-width: $desktop) {
     flex: 1 0 25%;
   }
+
+  @media (min-width: $desktop-large) {
+    flex: 1 0 20%;
+  }
 }
 
 @each $ano, $color in $anos {
@@ -26,10 +30,6 @@
       &:active { background: darken($color, 7%); }
     }
   }
-}
-
-.ano--ultimo {
-  box-shadow: 0 1px 0 #ccc;
 }
 
 .ano__titulo {
