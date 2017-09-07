@@ -22,7 +22,7 @@ gulp.task('scss', function () {
 gulp.task('pug', function () {
   return gulp.src('./src/pug/*.pug')
     .pipe(pug({ pretty: true }))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./dist'))
 });
 
 gulp.task('js', function () {
@@ -43,7 +43,7 @@ gulp.task('js-watch', ['js'], function (done) {
 });
 
 gulp.task('serve', ['scss', 'js', 'pug'], function() {
-  browserSync.init({ server: "./" });
+  browserSync.init({ server: "./dist" });
   gulp.watch('./src/scss/*.scss', ['scss']);
   gulp.watch('./src/js/*.js', ['js-watch']);
   gulp.watch('./src/pug/*.pug', ['pug-watch']);

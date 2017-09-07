@@ -12,8 +12,8 @@
     border-bottom: 0;
   }
 
-  &:hover > .materia__condicion {
-    transform: translateX(0);
+  &:hover > .materia__condicion > .materia__boton {
+    transform: translateY(0);
   }
 }
 
@@ -34,6 +34,39 @@
 .materia--cursando {
   box-shadow: 10px 0 0 $cursando inset;
   padding-left: 30px;
+}
+
+.materia--cursable {
+  color: #000;
+  cursor: default;
+
+  .materia__boton {
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .materia__boton--desaprobada {
+    transition-delay: .15s;
+    background: $desaprobada;
+    text-shadow: 0 -1px 0 darken($desaprobada, 10%);
+  }
+
+  .materia__boton--regular {
+    transition-delay: .1s;
+    background: $regular;
+    text-shadow: 0 -1px 0 darken($regular, 10%);
+  }
+
+  .materia__boton--aprobada {
+    transition-delay: .05s;
+    background: $aprobada;
+    text-shadow: 0 -1px 0 darken($aprobada, 10%);
+  }
+
+  .materia__boton--cursando {
+    background: $cursando;
+    text-shadow: 0 -1px 0 darken($cursando, 10%);
+  }
 }
 
 .materia__detalles {
@@ -66,14 +99,13 @@
 .materia__condicion {
   align-items: center;
   display: flex;
-  height: 100%;
+  // height: 100%;
   justify-content: flex-end;
   margin-left: -20px;
   position: absolute;
   right: 0;
-  top: 0;
-  transform: translateX(100%);
-  transition: all .3s ease-out;
+  bottom: 0;
+  // transform: translateX(100%);
   z-index: 1;
 }
 
@@ -88,6 +120,8 @@
   }
   
   &:checked + .materia__boton--desaprobada {
+    // box-shadow: 0 5px 0 0 darken($desaprobada, 10%) inset;
+    // padding-top: 5px;
     border-top: 5px solid darken($desaprobada, 10%);
   }
 
@@ -97,6 +131,7 @@
 
   &:checked + .materia__boton--aprobada {
     border-top: 5px solid darken($aprobada, 10%);
+    padding-top: 5px;
   }
 
   &:checked + .materia__boton--cursando {
@@ -108,42 +143,25 @@
   background: #fff;
   border-top: 0 solid transparent;
   cursor: not-allowed;
-  display: block;
+  display: flex;
   font-weight: bold;
-  height: 100%;
-  line-height: 50px;
-  max-height: 52px;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
   text-align: center;
-  transition: all .5s;
+  transition: all .2s ease-in;
   width: 50px;
+  transform: translateY(100%);
 }
 
-.materia--cursable {
-  color: #000;
-  cursor: default;
+.materia__boton--desaprobada {
+  transition-delay: .15s;
+}
 
-  .materia__boton {
-    color: #fff;
-    cursor: pointer;
-  }
+.materia__boton--regular {
+  transition-delay: .1s;
+}
 
-  .materia__boton--desaprobada {
-    background: $desaprobada;
-    text-shadow: 0 -1px 0 darken($desaprobada, 10%);
-  }
-
-  .materia__boton--regular {
-    background: $regular;
-    text-shadow: 0 -1px 0 darken($regular, 10%);
-  }
-
-  .materia__boton--aprobada {
-    background: $aprobada;
-    text-shadow: 0 -1px 0 darken($aprobada, 10%);
-  }
-
-  .materia__boton--cursando {
-    background: $cursando;
-    text-shadow: 0 -1px 0 darken($cursando, 10%);
-  }
+.materia__boton--aprobada {
+  transition-delay: .05s;
 }

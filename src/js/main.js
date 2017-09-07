@@ -346,3 +346,8 @@ elementoInformacion.addEventListener('click', () => {
 
   elementoInformacionTitulo.textContent = elementoInformacionTitulo.textContent == '(+)' ? '(-)' : '(+)';
 });
+
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.body.lastChild.previousSibling.remove()
+});

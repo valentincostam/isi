@@ -1,19 +1,29 @@
 doctype html
 html(lang="es")
   head
-    title Plan de Estudio - Ingenería en Sistemas de Información
+    title Plan de Estudios - Ingenería en Sistemas de Información
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="theme-color" content="#000")
+    meta(property="og:title" content="Plan de Estudios - Ingenería en Sistemas de Información - UTN CDU")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="http://www.valentincosta.com/isi/")
+    meta(property="og:image" content="http://www.valentincosta.com/isi/img/android-chrome-256x256.png")
+    meta(property="og:description" content="Herramienta para ayudarte a planificar tu carrera como Ingeniero en Sistemas de Información en la UTN CDU.")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700")
-    link(rel="stylesheet" href="dist/css/main.min.css")
+    link(rel="stylesheet" href="./css/main.min.css")
+    link(rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png")
+    link(rel="manifest" href="./manifest.json")
+    link(rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5")
 
   body
     header.header
-      img.header__logo(src="./dist/img/logo_utn_cdu.png", alt="Logo UTN Concepción del Uruguay")
+      img.header__logo(src="./img/logo_utn_cdu.png", alt="Logo UTN Concepción del Uruguay")
       h1.header__titulo
         span Ingeniería en Sistemas de Información
-        strong Plan de Estudio
+        strong Plan de Estudios
 
     section.informacion
       h3.informacion__titulo #[span (+)] ¿Cómo uso esta herramienta?
@@ -236,8 +246,8 @@ html(lang="es")
 
     footer.footer
       p.footer__authoring Hecho con #[span ❤] por #[strong Valentín Costa]
-      p.footer__version Plan de Estudio — Versión 1.0.0
+      p.footer__version Plan de Estudios — Versión 1.1.0
 
     script(src="https://unpkg.com/vue@2.2.6/dist/vue.js")
     script(src="https://unpkg.com/vuex@2.3.0")
-    script(src="dist/js/main.min.js")
+    script(src="./js/main.min.js")
