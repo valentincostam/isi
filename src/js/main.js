@@ -1,4 +1,4 @@
-let materiasISI = [
+let materiasISI = JSON.parse(localStorage.getItem('materiasISI')) || [
   // Primer año
   // - Anual
   { id: '2', nombre: 'Sistemas y Organizaciones',         horas: '3',  ano: '1', cuatrimestre: '0', esAnual: true,  estado: 'desaprobada', analista: false, integradora: true,  electiva: false, paraCursar: { necesitaRegular: [], necesitaAprobada: [] } },
@@ -130,6 +130,7 @@ const store = new Vuex.Store({
   mutations: {
     cambiarEstadoMateria (state, payload) {
       state.materias.find(materia => materia.id === payload.id).estado = payload.estado;
+      localStorage.setItem('materiasISI', JSON.stringify(materiasISI));
     },
     aprobarAno (state, payload) {
       for (var i = 0, len = payload.materias.length; i < len; i++) {
