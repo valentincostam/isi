@@ -2,7 +2,7 @@
   background: $materia;
   border-bottom: 1px solid darken($materia, 7%);
   color: #777;
-  cursor: not-allowed;
+  cursor: help;
   overflow: hidden;
   padding: 15px 20px;
   position: relative;
@@ -142,7 +142,7 @@
 .materia__boton {
   background: #fff;
   border-top: 0 solid transparent;
-  cursor: not-allowed;
+  cursor: help;
   display: flex;
   font-weight: bold;
   justify-content: center;
