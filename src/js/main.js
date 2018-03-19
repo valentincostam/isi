@@ -71,6 +71,7 @@ let materiasISI = JSON.parse(localStorage.getItem('materiasISI')) || [
   { id: '42', nombre: 'Gestión Avanzada de Datos',                   horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['30'], necesitaAprobada: ['20']} },
   { id: '43', nombre: 'Auditoría de Sistemas de Información',        horas: '6', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['26', '31'], necesitaAprobada: []} },
   { id: '44', nombre: 'Emprendedorismo',                             horas: '4', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: ['19'], necesitaAprobada: []} },
+  { id: '47', nombre: 'UIT y los Organismos Internacionales de TIC', horas: '3', ano: '5', cuatrimestre: '2', esAnual: false, estado: 'desaprobada', analista: false, integradora: false, electiva: true, paraCursar: { necesitaRegular: [], necesitaAprobada: ['2', '11', '17']} }
 ];
 
 const store = new Vuex.Store({
