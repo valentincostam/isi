@@ -15,21 +15,21 @@ gulp.task('scss', function () {
     .pipe(sass({ includePaths: ['./src/scss'] }).on('error', sass.logError))
     .pipe(postcss([autoprefixer()]))
     .pipe(cleancss())
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./docs/css'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('pug', function () {
   return gulp.src('./src/pug/*.pug')
     .pipe(pug({ pretty: true }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
 });
 
 gulp.task('js', function () {
   return gulp.src('./src/js/*.js')
     .pipe(concat('main.min.js'))
     //.pipe(uglify())
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest('./docs/js'))
 });
 
 gulp.task('pug-watch', ['pug'], function (done) {
@@ -43,7 +43,7 @@ gulp.task('js-watch', ['js'], function (done) {
 });
 
 gulp.task('serve', ['scss', 'js', 'pug'], function() {
-  browserSync.init({ server: "./dist" });
+  browserSync.init({ server: "./docs" });
   gulp.watch('./src/scss/*.scss', ['scss']);
   gulp.watch('./src/js/*.js', ['js-watch']);
   gulp.watch('./src/pug/*.pug', ['pug-watch']);
