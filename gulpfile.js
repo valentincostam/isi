@@ -1,52 +1,35 @@
-'use strict';
+const { src, dest, watch } = require('gulp')
+const sass = require('gulp-sass')(require('sass'))
+const cleanCss = require('gulp-clean-css')
+const pug = require('gulp-pug')
+const uglify = require('gulp-uglify')
 
-var gulp         = require('gulp'),
-    concat       = require('gulp-concat'),
-    pug          = require('gulp-pug'),
-    cleancss     = require('gulp-clean-css'),
-    autoprefixer = require('autoprefixer'),
-    postcss      = require('gulp-postcss'),
-    sass         = require('gulp-sass'),
-    uglify       = require('gulp-uglify'),
-    browserSync  = require('browser-sync').create();
+const css = () => {
+  return src('./src/scss/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCss())
+    .pipe(dest('./docs/css'))
+}
 
-gulp.task('scss', function () {
-  return gulp.src('./src/scss/*.scss')
-    .pipe(sass({ includePaths: ['./src/scss'] }).on('error', sass.logError))
-    .pipe(postcss([autoprefixer()]))
-    .pipe(cleancss())
-    .pipe(gulp.dest('./docs/css'))
-    .pipe(browserSync.stream());
-});
+const html = () => {
+  return src('./src/pug/*.pug')
+    .pipe(pug())
+    .pipe(dest('./docs'))
+}
 
-gulp.task('pug', function () {
-  return gulp.src('./src/pug/*.pug')
-    .pipe(pug({ pretty: true }))
-    .pipe(gulp.dest('./docs'))
-});
+const js = () => {
+  return src('./src/js/*.js')
+    .pipe(uglify())
+    .pipe(dest('./docs/js'))
+}
 
-gulp.task('js', function () {
-  return gulp.src('./src/js/*.js')
-    .pipe(concat('main.min.js'))
-    //.pipe(uglify())
-    .pipe(gulp.dest('./docs/js'))
-});
+const listen = function () {
+  watch('./src/scss/*.scss', css)
+  watch('./src/pug/*.pug', html)
+  watch('./src/js/*.js', js)
+}
 
-gulp.task('pug-watch', ['pug'], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task('js-watch', ['js'], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task('serve', ['scss', 'js', 'pug'], function() {
-  browserSync.init({ server: "./docs" });
-  gulp.watch('./src/scss/*.scss', ['scss']);
-  gulp.watch('./src/js/*.js', ['js-watch']);
-  gulp.watch('./src/pug/*.pug', ['pug-watch']);
-});
-
-gulp.task('default', ['serve']);
+exports.css = css
+exports.html = html
+exports.js = js
+exports.listen = listen

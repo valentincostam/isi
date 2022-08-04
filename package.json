@@ -1,38 +1,19 @@
 {
-  "name": "plan-estudio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "isi",
+  "description": "Llevá registro de tu progreso en la carrera de Ingeniería en Sistemas de Información de la UTN FRCU",
+  "author": "Valentín Costa <valentincostam@gmail.com> (https://valentincosta.com)",
+  "version": "1.2.3",
+  "license": "MIT",
+  "main": "src/js/main.js",
+  "directories": {
+    "doc": "docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/valeco/plan-estudio.git"
-  },
-  "author": "Valentín Costa",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/valeco/plan-estudio/issues"
-  },
-  "homepage": "https://github.com/valeco/plan-estudio#readme",
   "devDependencies": {
-    "autoprefixer": "^7.2.6",
-    "browser-sync": "^2.24.5",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-concat": "^2.6.1",
-    "gulp-connect": "^5.5.0",
-    "gulp-postcss": "^7.0.1",
-    "gulp-pug": "^3.3.0",
-    "gulp-sass": "^3.2.1",
-    "gulp-uglify": "^3.0.0"
-  },
-  "dependencies": {}
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.54.3"
+  }
 }
