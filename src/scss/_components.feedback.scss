@@ -1,0 +1,18 @@
+.feedback {
+  padding: 1rem;
+  background-color: white;
+  font-size: 0.9rem;
+  margin-top: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
+  a {
+    color: #0049d1;
+    font-weight: bold;
+  }
+
+  @media (min-width: $tablet) {
+    border: 1px solid #ddd;
+    margin: 0 1rem 1rem 1rem;
+  }
+}
