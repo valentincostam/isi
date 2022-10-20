@@ -5,14 +5,14 @@
 .header__logo {
   display: block;
   margin-bottom: 1rem;
-  opacity: .75;
+  opacity: 0.8;
   width: 5em;
 
   @media (min-width: $tablet) {
     float: left;
     height: 2.5em;
     width: auto;
-    margin-top: .35em;
+    margin-top: 0.35em;
     margin-right: 1em;
   }
 }
@@ -24,13 +24,13 @@
   span {
     color: #444;
     display: block;
-    font-size: .42em;
+    font-size: 0.42em;
     font-weight: normal;
   }
 
   strong {
     display: block;
     font-size: 1em;
-    line-height: .9;
+    line-height: 0.9;
   }
 }

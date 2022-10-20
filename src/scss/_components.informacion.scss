@@ -1,9 +1,8 @@
 .informacion {
   background: lighten(#f7e399, 8%);
-  // border-radius: .3em;
   border-top: 1px solid darken(#f7e399, 5%);
   border-bottom: 1px solid darken(#f7e399, 5%);
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   padding: 1em;
   cursor: pointer;
 
@@ -33,7 +32,8 @@
 
   @media (min-width: $tablet) {
     border: 1px solid darken(#f7e399, 5%);
-    margin: 0 1rem 1rem 1rem;
+    margin: 1rem;
+    margin-bottom: 0;
   }
 }
 
@@ -62,16 +62,16 @@
 
 .informacion__parrafo {
   color: #333;
-  font-size: .9em;
-  margin: 0 0 .8em 0;
+  font-size: 0.9em;
+  margin: 0 0 0.8em 0;
 
   &:first-child {
-    margin-top: .8em;
+    margin-top: 0.8em;
   }
 }
 
 .informacion__lista {
   color: #333;
-  font-size: .9em;
+  font-size: 0.9em;
   margin: 0;
 }

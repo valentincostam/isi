@@ -2,11 +2,10 @@
   "name": "isi",
   "description": "Llevá registro de tu progreso en la carrera de Ingeniería en Sistemas de Información de la UTN FRCU",
   "author": "Valentín Costa <valentincostam@gmail.com> (https://valentincosta.com)",
-  "version": "1.2.3",
   "license": "MIT",
-  "main": "src/js/main.js",
-  "directories": {
-    "doc": "docs"
+  "scripts": {
+    "watch": "gulp listen",
+    "build": "gulp html css js"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
