@@ -60,8 +60,8 @@ Con suerte, [Plande](https//plande.app) va a estar listo pronto y va a ser más 
 
 ## ⚒️ Tecnologías usadas
 
-- [Vue](https://vuejs.org/) [(v2.2.6 via CDN)](https://github.com/valentincostam/isi/blob/master/src/pug/index.pug#L253)
-- [Vuex](https://vuex.vuejs.org/) [(v2.3.0 via CDN)](https://github.com/valentincostam/isi/blob/master/src/pug/index.pug#L254)
+- [Vue](https://vuejs.org/) ([v2.2.6 via CDN](https://github.com/valentincostam/isi/blob/master/src/pug/index.pug#L252))
+- [Vuex](https://vuex.vuejs.org/) ([v2.3.0 via CDN](https://github.com/valentincostam/isi/blob/master/src/pug/index.pug#L253))
 - [Gulp](https://gulpjs.com/)
 - [Pug](https://pugjs.org/)
 - [Sass](https://sass-lang.com/)
