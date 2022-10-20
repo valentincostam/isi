@@ -2,7 +2,7 @@
 
 El plan de estudios _interactivo_ de **Ingeniería en Sistemas de Información** de la [UTN FRCU](https://www.frcu.utn.edu.ar/).
 
-[valentincosta.com/isi](https://valentincosta.com/isi)
+[isi-frcu.vercel.app/](https://isi-frcu.vercel.app/)
 
 ## 📜 Descripción
 
