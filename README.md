@@ -32,7 +32,7 @@ El plan de estudios _interactivo_ de **Ingeniería en Sistemas de Información**
 
 ### ¿Cómo se calcula el progreso?
 
-El progreso, es decir, el porcentaje de la carrera has completado, se calcula de la siguiente manera:
+El progreso, es decir, el porcentaje de la carrera que has completado, se calcula de la siguiente manera:
 
 ```
                 Horas de materias              Horas de materias
