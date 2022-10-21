@@ -28,7 +28,7 @@ El plan de estudios _interactivo_ de **Ingeniería en Sistemas de Información**
 - Saber cuánto te falta para egresarte.
 - Compartir con tus compañeros, amigos y familiares tu situación académica.
 
-## Preguntas frecuentes
+## 🤔 Preguntas frecuentes
 
 ### ¿Cómo se calcula el progreso?
 
