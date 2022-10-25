@@ -98,6 +98,6 @@ Ya podés modificar cualquiera de los archivos en el directorio `src` y los arch
 
 Este proyecto ya no está en desarrollo. Sin embargo, si encontrás algún problema o tenés alguna sugerencia, por favor, no dudes en [escribirme por email](mailto:valentincostam@gmail.com).
 
-## 📝 License
+## 📝 Licencia
 
 [MIT](https://github.com/valentincostam/isi/blob/main/LICENSE) © [Valentín Costa](https://valentincosta.com)
