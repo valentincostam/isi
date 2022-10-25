@@ -52,7 +52,7 @@ Actualmente, estoy creando [Plande](https//plande.app), una web app similar a é
 
 ### 3. ¿Puedo copiarla y hacerla para otra carrera?
 
-Sí, por supuesto. Dicho eso, no te lo recomiendo. El código está feo y es engorroso armar este [array monstruoso](https://github.com/valentincostam/isi/blob/master/src/js/main.js#L1-L75) (\*).
+Sí, por supuesto, pero no te lo recomiendo. El código está feo y es engorroso armar este [array monstruoso](https://github.com/valentincostam/isi/blob/master/src/js/main.js#L1-L75) (\*).
 
 Con suerte, [Plande](https//plande.app) va a estar listo pronto y va a ser más fácil agregar otra carrera.
 
