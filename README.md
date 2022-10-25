@@ -30,7 +30,7 @@ El plan de estudios _interactivo_ de **Ingeniería en Sistemas de Información**
 
 ## 🤔 Preguntas frecuentes
 
-### ¿Cómo se calcula el progreso?
+### 1. ¿Cómo se calcula el progreso?
 
 El progreso, es decir, el porcentaje de la carrera que has completado, se calcula de la siguiente manera:
 
@@ -44,13 +44,13 @@ Progreso = ———————————————————————
 
 En el código, ese cálculo se encuentra en [estas líneas](https://github.com/valentincostam/isi/blob/master/src/js/main.js#L295-L301).
 
-### ¿Se pueden agregar otras carreras a esta web app?
+### 2. ¿Se pueden agregar otras carreras a esta web app?
 
 Sí, pero no sería fácil. Esta versión no cuenta con la posibilidad de cargar nuevas carreras, ni siquiera materias. Todos los datos de la carrera están [_hard-coded_](https://es.wikipedia.org/wiki/Hard_code).
 
 Actualmente, estoy creando [Plande](https//plande.app), una web app similar a ésta, que permite cargar más carreras. Seguime en [Twitter](https://twitter.com/valentincostam) para enterarte cómo va.
 
-### ¿Puedo copiarla y hacerla para otra carrera?
+### 3. ¿Puedo copiarla y hacerla para otra carrera?
 
 Sí, por supuesto. Dicho eso, no te lo recomiendo. El código está feo y es engorroso armar este [array monstruoso](https://github.com/valentincostam/isi/blob/master/src/js/main.js#L1-L75) (\*).
 
