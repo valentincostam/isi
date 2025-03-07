@@ -70,7 +70,7 @@ Con suerte, [Plande](https//plande.app) va a estar listo pronto y va a ser más 
 
 ### Requerimientos
 
-Tener instalado `node`, `npm`, `npx`, y `gulp-cli` (globalmente).
+Tener instalado globalmente `node`, `npm`, `npx`, y `gulp-cli`.
 
 ### Pasos
 
@@ -100,4 +100,4 @@ Este proyecto ya no está en desarrollo. Sin embargo, si encontrás algún probl
 
 ## 📝 Licencia
 
-[MIT](https://github.com/valentincostam/isi/blob/main/LICENSE) © [Valentín Costa](https://valentincosta.com)
+[MIT](https://github.com/valentincostam/isi/blob/master/LICENSE) © [Valentín Costa](https://valentincosta.com)
